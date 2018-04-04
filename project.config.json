@@ -2,16 +2,15 @@
 	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": true,
-		"es6": true,
+		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
+	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
-	"libVersion": "1.9.94",
 	"appid": "wx70422498e4c83d41",
 	"projectname": "mengqiu",
-	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,

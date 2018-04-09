@@ -25,7 +25,7 @@ export default {
         iconPath: './static/imgs/index/icon_home_nor@2x.png',
         selectedIconPath: './static/imgs/index/icon_home_sel@2x.png'
       }, {
-        pagePath: 'pages/index/main',
+        pagePath: 'pages/release/main',
         text: '发布',
         iconPath: './static/imgs/index/icon_send@2x.png',
         selectedIconPath: './static/imgs/index/icon_send@2x.png'

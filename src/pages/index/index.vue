@@ -33,9 +33,9 @@
             <img src="../../../static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
           </span>
           <span class="likes-counts">36</span>
-          <span class="comments">
+          <a href="/pages/comments/main" class="comments">
             <img src="../../../static/imgs/index/feed_icon_comment@2x.png" alt="like">
-          </span>
+          </a>
           <span class="comments-counts">11</span>
         </div>
 

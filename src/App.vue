@@ -11,7 +11,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  page {
+    background: #f1f1fa;
+  }
+
 .container {
   height: 100%;
   display: flex;

@@ -11,12 +11,13 @@ export default {
   // 这个字段走 app.json
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
-    pages: ['^pages/index/main'],
+    pages: ['^pages/index/main', 'pages/user/main'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#ffe955',
       navigationBarTitleText: '萌球社区',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      backgroundColor: '#f1f1fa'
     },
     tabBar: {
       list: [{
@@ -27,9 +28,10 @@ export default {
       }, {
         pagePath: 'pages/index/main',
         iconPath: 'imgs/icon_send@2x.png',
-        selectedIconPath: 'imgs/icon_send@2x.png'
+        selectedIconPath: 'imgs/icon_send@2x.png',
+        text: '发布'
       }, {
-        pagePath: 'pages/index/main',
+        pagePath: 'pages/user/main',
         iconPath: 'imgs/icon_user_nor@2x.png',
         selectedIconPath: 'imgs/icon_user_sel@2x.png',
         text: '铲屎官'

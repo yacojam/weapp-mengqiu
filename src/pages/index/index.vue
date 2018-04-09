@@ -1,10 +1,8 @@
 <template>
-  <div class="container" @click="clickHandle('test click', $event)">
-    <tabs @tabChanged="handleTabChange"></tabs>
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <div class="userinfo-nickname">
-      </div>
+  <div class="container">
+    <tabs :tabs="['推荐','关注']" @tabChanged="handleTabChange"></tabs>
+    <div>
+      {{text}}
     </div>
   </div>
 </template>
@@ -15,8 +13,7 @@ import tabs from '@/components/NavbarTabs/NavbarTabs'
 export default {
   data () {
     return {
-      motto: 'Hello World',
-      userInfo: {}
+      text: ''
     }
   },
 
@@ -38,6 +35,11 @@ export default {
       })
     },
     handleTabChange (tabIndex) {
+      if (tabIndex === 0) {
+        this.text = '推荐页面'
+      } else {
+        this.text = '关注页面'
+      }
     }
   },
 

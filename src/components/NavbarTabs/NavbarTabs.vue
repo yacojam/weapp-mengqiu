@@ -1,7 +1,7 @@
 <template>
   <div class="tabs">
     <ul>
-      <li @click="handleClick(index)" :class="{'active':selectedIndex === index }" class="tabItem" v-for="(item, index) in tabs" :key="index">{{item}}</li>
+      <li @click.stop="handleClick(index)" :class="{'active':selectedIndex === index }" class="tabItem" v-for="(item, index) in tabs" :key="index">{{item}}</li>
     </ul>
   </div>
 </template>
@@ -9,15 +9,17 @@
 <script>
 export default {
   name: 'tabs',
+  props: [
+    'tabs'
+  ],
   data () {
     return {
-      tabs: ['推荐', '关注'],
       selectedIndex: 0
     }
   },
   methods: {
     handleClick (index) {
-      // store.commit('tabChanged', index)
+      this.selectedIndex = index
     }
   },
   watch: {
@@ -29,12 +31,9 @@ export default {
       }
     }
   },
-  computed: {
-    // selectedIndex () {
-    //   return store.state.tabSelectedIndex
-    // }
+  created () {
+    this.$emit('tabChanged', this.selectedIndex)
   }
-
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="top">
-      <img class="avatar" :src="user.avatar" alt="">
+      <img @click="handleClick" class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
         <span class="des">{{user.des}}</span>
@@ -37,6 +37,13 @@ export default {
         fellow: 0,
         fans: 0
       }
+    }
+  },
+  methods: {
+    handleClick () {
+      wx.navigateTo({
+        url: '/pages/consumer/main'
+      })
     }
   }
 }

@@ -25,11 +25,11 @@ export default {
         selectedIconPath: 'imgs/icon_home_sel@2x.png',
         text: '萌球社区'
       }, {
-        pagePath: 'pages/logs/main',
+        pagePath: 'pages/index/main',
         iconPath: 'imgs/icon_send@2x.png',
         selectedIconPath: 'imgs/icon_send@2x.png'
       }, {
-        pagePath: 'pages/logs/main',
+        pagePath: 'pages/index/main',
         iconPath: 'imgs/icon_user_nor@2x.png',
         selectedIconPath: 'imgs/icon_user_sel@2x.png',
         text: '铲屎官'

@@ -1,0 +1,93 @@
+//定义颜色规范
+$color-background: #f1f1fa;
+$color-normal:#ffe955;
+$color-pressed:#edbb36;
+$color-disabled:#fff4aa;
+$color-secondary:#000000;
+$color-splitline:#e0e0e0;
+$color-message-main:#000000;
+$color-message-normal:#333333;
+$color-message-less: #4c4c4c;
+//定义文字规范
+@mixin font-common {
+  font: {
+    family: Helvatica, '苹方';
+  }
+  color: #000000;
+}
+@mixin font-36 {
+  @include font-common;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+@mixin font-32 {
+  @include font-common;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+@mixin font-32-median {
+  @include font-common;
+  font-size: 32rpx;
+  font-weight: 500;
+  line-height: 48rpx;
+}
+@mixin font-30 {
+  @include font-common;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+@mixin font-26 {
+  @include font-common;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+@mixin font-26-median {
+  @include font-common;
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 39rpx;
+}
+@mixin font-26-normal {
+  @include font-common;
+  font-size: 26rpx;
+}
+@mixin font-22 {
+  @include font-common;
+  font-size: 22rpx;
+}
+@mixin font-20 {
+  @include font-common;
+  font-size: 20rpx;
+}
+//定义头像尺寸
+@mixin image-avatar-large {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+@mixin image-avatar-small {
+  width: 66rpx;
+  height: 66rpx;
+  border-radius: 50%;
+}
+@mixin image-feed-750 {
+  width: 750rpx;
+  height: 500rpx;
+}
+@mixin image-feed-246 {
+  width: 246rpx;
+  height: 246rpx;
+}
+@mixin image-feed-372 {
+  width: 372rpx;
+  height: 372rpx;
+}
+@mixin image-upload {
+  width: 120rpx;
+  height: 120rpx;
+}
+@mixin image-message {
+  width: 92rpx;
+  height: 92rpx;
+}
+

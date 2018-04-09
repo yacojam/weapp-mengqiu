@@ -25,10 +25,6 @@ export default {
   },
 
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      wx.navigateTo({ url })
-    },
     getUserInfo () {
       // 调用登录接口
       wx.login({
@@ -41,21 +37,7 @@ export default {
         }
       })
     },
-    clickHandle (msg, ev) {
-      console.log('clickHandle:', msg, ev)
-    },
     handleTabChange (tabIndex) {
-      tabIndex = parseInt(tabIndex)
-      console.log(tabIndex)
-      if (tabIndex === 0) {
-        wx.redirectTo({
-          url: '/pages/index/main'
-        })
-      } else if (tabIndex === 1) {
-        wx.redirectTo({
-          url: '/pages/counter/main'
-        })
-      }
     }
   },
 
@@ -66,7 +48,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../../common/sass/variable.scss';
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -78,6 +61,7 @@ export default {
   height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
+  //@include image-avatar-large;
 }
 
 .userinfo-nickname {

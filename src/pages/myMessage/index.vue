@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import tabs from '@/components/NavbarTabs'
+import tabs from '@/components/NavbarTabs/NavbarTabs'
 export default {
-  name: "index",
+  name: 'index',
   data () {
     return {
       text: ''

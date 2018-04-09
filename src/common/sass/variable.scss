@@ -15,6 +15,11 @@ $color-message-less: #4c4c4c;
   }
   color: #000000;
 }
+@mixin font-46 {
+  @include font-common;
+  font-size: 46rpx;
+  font-weight: bold;
+}
 @mixin font-36 {
   @include font-common;
   font-size: 36rpx;

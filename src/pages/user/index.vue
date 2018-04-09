@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="top">
-      <img :src="user.avatar" alt="">
+      <img class="avatar" :src="user.avatar" alt="">
       <p>
-        <span>{{user.name}}</span>
-        <span>{{user.des}}</span>
+        <span class="name">{{user.name}}</span><br>
+        <span class="des">{{user.des}}</span>
       </p>
     </div>
     <div class="center">
@@ -16,10 +16,10 @@
     </div>
     <div class="bottom">
       <ul>
-        <li>我的消息</li>
-        <li>我的收藏</li>
-        <li>意见反馈</li>
-        <li>关于萌球</li>
+        <li><img src='/static/imgs/index/user_icon_sms@3x.png' alt="">我的消息</li>
+        <li><img src='/static/imgs/index/user_icon_collect@3x.png' alt="">我的收藏</li>
+        <li><img src='/static/imgs/index/user_icon_suggest@3x.png' alt="">意见反馈</li>
+        <li><img src='/static/imgs/index/user_icon_about@3x.png' alt="">关于萌球</li>
       </ul>
     </div>
   </div>
@@ -30,9 +30,9 @@ export default {
   data () {
     return {
       user: {
-        avatar: '',
-        name: '',
-        des: '',
+        avatar: '/static/imgs/index/0.jpg',
+        name: 'Andrew',
+        des: '你们地球人就喜欢猜',
         publish: 0,
         fellow: 0,
         fans: 0
@@ -50,6 +50,25 @@ export default {
     height: 336rpx;
     box-sizing: border-box;
     padding-top: 56rpx;
+    padding-left: 64rpx;
+    display:flex;
+  }
+  .top .avatar{
+    width: 168rpx;
+    height: 168rpx;
+    border-radius: 50%;
+  }
+  .top p {
+    margin-left: 36rpx;
+    padding-top: 42rpx;
+  }
+  .top .name {
+    @include font-46;
+  }
+  .top .des {
+    @include font-26-normal;
+    margin-top: 24rpx;
+    opacity: 0.7;
   }
   .center {
     width: 100%;
@@ -59,22 +78,27 @@ export default {
   .center ul{
     position: absolute;
     left: 64rpx;
-    top: -92rpx;
+    top: -82rpx;
     width: 622rpx;
     height: 184rpx;
     box-sizing: border-box;
     background: rgba(255,255,255,.88);
     border-radius: 20rpx;
     display: flex;
-    padding: 24rpx 0rpx;
+    padding: 28rpx 0rpx;
+    box-shadow: 0rpx 4rpx 21rpx rgba(4,0,0, .2);
   }
   .center ul li {
     text-align:center;
     flex: 1;
   }
+  .center ul li:not(:last-child) {
+    border-right: 1rpx solid $color-splitline;
+  }
   .center ul li p:last-child {
     @include font-26-normal;
     margin-top: 24rpx;
+    opacity: 0.5;
   }
   .center ul li p:first-child {
     @include font-32;
@@ -87,12 +111,19 @@ export default {
     display:flex;
     padding-left: 64rpx;
     flex-direction: column;
-    border-bottom: 1rpx solid $color-splitline;
+    border-top: 1rpx solid $color-splitline;
     background: #fff;
   }
   .bottom ul li {
     @include font-32-median;
     line-height: 88rpx;
     border-bottom: 1rpx solid $color-splitline;
+    display:flex;
+    align-items: center;
+  }
+  .bottom ul li img{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 34rpx;
   }
 </style>

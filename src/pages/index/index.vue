@@ -1,91 +1,168 @@
 <template>
   <div class="container">
-    <tabs :tabs="['推荐','关注']" @tabChanged="handleTabChange"></tabs>
-    <div>
-      {{text}}
+
+    <div class="header-bar">
+      <div class="for-recommend" :class="{ active: showRecommend}" @click="changeContent('recommend')">推荐</div>
+      <div class="for-attention" :class="{ active: !showRecommend}" @click="changeContent('attention')">关注</div>
     </div>
+
+    <div class="recommend">
+      <div class="user-shows-content">
+        <div class="head-portrait left-correction">
+          <img src="../../../static/imgs/index/feed_icon_photo@3x.png" alt="用户头像">
+        </div>
+        <div class="info">
+          <p class="name">Sabar</p>
+          <p class="time"><span class="subtime">昨天</span>09:32</p>
+        </div>
+
+        <p class="title left-correction">这种天气最适合带着丫丫出去遛弯儿啦~~</p>
+
+        <div class="big-show">
+          <img src="../../../static/imgs/index/0.jpg" alt="展示用大图" mode="scaleToFill" width="100%">
+        </div>
+
+        <div class="operate left-correction">
+          <span class="like">
+            <img src="../../../static/imgs/index/feed_icon_collect_nor@2x.png" alt="like">
+          </span>
+          <span class="forward">
+            <img src="../../../static/imgs/index/feed_icon_share@2x.png" alt="like">
+          </span>
+          <span class="give-like">
+            <img src="../../../static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
+          </span>
+          <span class="likes-counts">36</span>
+          <span class="comments">
+            <img src="../../../static/imgs/index/feed_icon_comment@2x.png" alt="like">
+          </span>
+          <span class="comments-counts">11</span>
+        </div>
+
+        <div class="bottom-line"></div>
+      </div>
+    </div>
+
+    <div class="attention"></div>
+
   </div>
 </template>
 
 <script>
-import tabs from '@/components/NavbarTabs/NavbarTabs'
-
-export default {
-  data () {
-    return {
-      text: ''
-    }
-  },
-
-  components: {
-    tabs
-  },
-
-  methods: {
-    getUserInfo () {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo
-            }
-          })
-        }
-      })
-    },
-    handleTabChange (tabIndex) {
-      if (tabIndex === 0) {
-        this.text = '推荐页面'
-      } else {
-        this.text = '关注页面'
+  export default {
+    data () {
+      return {
+        showRecommend: true
       }
-    }
-  },
+    },
 
-  created () {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo()
+    components: {},
+
+    methods: {
+      changeContent (type) {
+        (type === 'recommend') ? this.showRecommend = true : this.showRecommend = false
+      }
+    },
+
+    created () {}
   }
-}
 </script>
 
-<style lang="scss" scoped>
-@import '../../common/sass/variable.scss';
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+<style scoped>
+  .left-correction {
+    padding-left: 40rpx;
+  }
+  .header-bar {
+    width: 100%;
+    background-color: #ffe955;
+  }
+  .active {
+    border-bottom: 8rpx solid #000;
+  }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  //@include image-avatar-large;
-}
+  .for-recommend,
+  .for-attention {
+    display: inline-block;
+    padding: 25rpx 2rpx;
+    font-size: 30rpx;
+    color: #000;
+    margin-left: 50rpx;
+  }
 
-.userinfo-nickname {
-  color: #aaa;
-}
+  .head-portrait img {
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 50%;
+  }
 
-.usermotto {
-  margin-top: 150px;
-}
+  .recommend {
+    width: 100%;
+  }
+  .user-shows-content {
+    padding: 40rpx 0 0;
+  }
+  .info,
+  .head-portrait {
+    display: inline-block;
+    height: 60rpx;
+    margin-bottom: 50rpx;
+  }
+  .info {
+    vertical-align: bottom;
+    margin-left: 26rpx;
+  }
+  .info .name {
+    font-family: "HelveticaNeueLTPro Md";
+    font-size: 26rpx;
+    color: #000;
+    margin-bottom: 14rpx;
+  }
+  .info .time {
+    font-family: "HelveticaNeueLTPro Lt";
+    font-size: 22rpx;
+    color: #000;
+    opacity: 0.7;
+  }
+  .time .subtime {
+    margin-right: 12rpx;
+  }
+  .recommend .title {
+    font-size: 32rpx;
+    font-family: "PingFang SC";
+    margin-bottom: 30rpx;
+  }
+  .recommend .big-show img {
+    width: 100%;
+    height: 500rpx;
+  }
+  .operate {
+    display: flex;
+    align-items: center;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+  }
+  .operate img {
+    width: 46rpx;
+    height: 46rpx;
+  }
+  .operate .likes-counts,
+  .operate .comments-counts {
+    font-family: "HelveticaNeueLTPro Roman";
+    font-size: 32rpx;
+    color: #000;
+    display: inline-block;
+    width: 80rpx;
+  }
+  .operate .like, .operate .forward {
+    margin-right: 46rpx;
+  }
+  .operate .give-like, .operate .comments {
+    margin-right: 16rpx;
+  }
 
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-
-.counter {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
+  .bottom-line {
+    width: 100%;
+    background-color: #f1f1fa;
+    height: 18rpx;
+  }
 </style>

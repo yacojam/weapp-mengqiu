@@ -14,12 +14,12 @@
 <style>
   .container {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    padding: 200rpx 0;
     box-sizing: border-box;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: #f1f1fa;
   }
   /* this rule will be remove */
   * {

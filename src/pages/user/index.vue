@@ -9,7 +9,7 @@
     </div>
     <div class="center">
       <ul>
-        <li><p>{{user.publish}}</p><p>发布</p></li>
+        <li @click="publish"><p>{{user.publish}}</p><p>发布</p></li>
         <li><p>{{user.fellow}}</p><p>关注</p></li>
         <li><p>{{user.fans}}</p><p>粉丝</p></li>
       </ul>
@@ -43,6 +43,11 @@ export default {
     handleClick () {
       wx.navigateTo({
         url: '/pages/consumer/main'
+      })
+    },
+    publish () {
+      wx.navigateTo({
+        url: '/pages/upload/main'
       })
     }
   }

@@ -11,48 +11,54 @@
         <img class="fansBtn" src="../../../static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
       </div>
     </div>
-    <div class="bottom">
-      <div class="title">
-        最新发布 <span>{{photoNum}}</span>
-      </div>
-      <div class="photos">
-        <img v-for="(item, index) in photos" :key="index" :src="item" alt="">
-      </div>
-    </div>
+
+    <latest-release-list :photos="photos"></latest-release-list>
+    
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        name: 'Evelynn',
-        des: '你们地球人就喜欢猜',
-        avatar: require('../../../static/imgs/index/0.jpg'),
-        fellow: 0,
-        fans: 0,
-        isFellowed: true,
-        photoNum: 18,
-        photos: [
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg',
-          '../../../static/imgs/index/0.jpg'
-        ]
-      }
+import latestReleaseList from '@/components/latestReleaseList'
+export default {
+  data () {
+    return {
+      name: 'Evelynn',
+      des: '你们地球人就喜欢猜',
+      avatar: require('../../../static/imgs/index/0.jpg'),
+      fellow: 0,
+      fans: 0,
+      isFellowed: true,
+      photoNum: 18,
+      photos: [
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg',
+        '../../../static/imgs/index/0.jpg'
+      ]
     }
+  },
+  methods: {
+    jump (type = 'details') {
+      wx.navigateTo({
+        url: `/pages/${type}/main`
+      })
+    }
+  },
+  components: {
+    latestReleaseList
   }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -96,29 +102,5 @@
     height: 68rpx;
     margin-top: 25rpx;
   }
-  .bottom {
-
-  }
-  .bottom .title {
-    @include font-32;
-    line-height: 109rpx;
-    text-indent: 40rpx;
-    width: 100%;
-    height: 109rpx;
-    span {
-      @include font-32-median;
-      color:$color-message-less;
-      margin-left: 24rpx;
-    }
-  }
-  .bottom .photos {
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .bottom .photos img{
-    width: 246rpx;
-    height: 246rpx;
-    margin-bottom: 6rpx;
-  }
+  
 </style>

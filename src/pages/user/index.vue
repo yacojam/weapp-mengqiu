@@ -1,24 +1,24 @@
 <template>
   <div class="container">
     <div class="top">
-      <img @click="handleClick" class="avatar" :src="user.avatar" alt="">
+      <img @click="jump('consumer')" class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
-        <span class="des">{{user.des}}<img @click="handleAlter" class="alter" src="../../../static/imgs/index/user_icon_sign@3x.png" alt=""></span>
+        <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="../../../static/imgs/index/user_icon_sign@3x.png" alt=""></span>
 
       </p>
     </div>
     <div class="center">
       <ul>
-        <li @click="publish"><p>{{user.publish}}</p><p>发布</p></li>
-        <li><p>{{user.fellow}}</p><p>关注</p></li>
-        <li><p>{{user.fans}}</p><p>粉丝</p></li>
+        <li @click="jump('upload')"><p>{{user.publish}}</p><p>发布</p></li>
+        <li @click="jump('concern')"><p>{{user.fellow}}</p><p>关注</p></li>
+        <li @click="jump('fans')"><p>{{user.fans}}</p><p>粉丝</p></li>
       </ul>
     </div>
     <div class="bottom">
       <ul>
-        <li @click="myMessage"><img src='/static/imgs/index/user_icon_sms@3x.png' alt="">我的消息</li>
-        <li><img src='/static/imgs/index/user_icon_collect@3x.png' alt="">我的收藏</li>
+        <li @click="jump('myMessage')"><img src='/static/imgs/index/user_icon_sms@3x.png' alt="">我的消息</li>
+        <li @click="jump('collection')"><img src='/static/imgs/index/user_icon_collect@3x.png' alt="">我的收藏</li>
         <li><img src='/static/imgs/index/user_icon_suggest@3x.png' alt="">意见反馈</li>
         <li><img src='/static/imgs/index/user_icon_about@3x.png' alt="">关于萌球</li>
       </ul>
@@ -41,24 +41,9 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    jump (type) {
       wx.navigateTo({
-        url: '/pages/consumer/main'
-      })
-    },
-    publish () {
-      wx.navigateTo({
-        url: '/pages/upload/main'
-      })
-    },
-    myMessage () {
-      wx.navigateTo({
-        url: '/pages/myMessage/main'
-      })
-    },
-    handleAlter () {
-      wx.navigateTo({
-        url: '/pages/signature/main'
+        url: `/pages/${type}/main`
       })
     }
   }

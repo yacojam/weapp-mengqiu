@@ -3,7 +3,8 @@
     <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
-        <video :show-play-btn="false" objectFit="fill" :controls="false" :src="item" alt=""></video>
+        <video @play="fullScreen" id="myVideo" :show-play-btn="false" :show-center-play-btn="true" objectFit="cover" :controls="false" :src="item" alt=""></video>
+        <!--<img class="playIcon" src="../../../static/imgs/release/feed_icon_photo@3x.png" alt="">-->
         <img @click="deleteImg(index)" class="delete" src="../../../static/imgs/index/feed_icon_del@3x.png" alt="">
       </div>
       <img @click="selectVideo" src="../../../static/imgs/index/feed_icon_add@3x.png" alt="">
@@ -38,6 +39,10 @@
             _this.pics = _this.pics.concat(imgsrc)
           }
         })
+      },
+      fullScreen () {
+        let video = wx.createVideoContext('myVideo')
+        video.requestFullScreen()
       },
       deleteImg (index) {
         this.pics.splice(index, 1)
@@ -87,6 +92,13 @@
   .uploadImages .imgs {
     position: relative;
   }
+  /*.uploadImages .playIcon {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 120rpx;*/
+    /*height: 120rpx;*/
+  /*}*/
   .uploadImages .delete {
     position: absolute;
     width: 44rpx;

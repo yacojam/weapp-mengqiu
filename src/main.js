@@ -22,18 +22,18 @@ export default {
       list: [{
         pagePath: 'pages/index/main',
         text: '萌球社区',
-        iconPath: './static/imgs/index/icon_home_nor@2x.png',
-        selectedIconPath: './static/imgs/index/icon_home_sel@2x.png'
+        iconPath: './static/imgs/index/icon_home_nor@3x.png',
+        selectedIconPath: './static/imgs/index/icon_home_sel@3x.png'
       }, {
         pagePath: 'pages/release/main',
         text: '发布',
-        iconPath: './static/imgs/index/icon_send@2x.png',
-        selectedIconPath: './static/imgs/index/icon_send@2x.png'
+        iconPath: './static/imgs/index/icon_send@3x.png',
+        selectedIconPath: './static/imgs/index/icon_send@3x.png'
       }, {
         pagePath: 'pages/user/main',
         text: '铲屎官',
-        iconPath: './static/imgs/index/icon_user_nor@2x.png',
-        selectedIconPath: './static/imgs/index/icon_user_sel@2x.png'
+        iconPath: './static/imgs/index/icon_user_nor@3x.png',
+        selectedIconPath: './static/imgs/index/icon_user_sel@3x.png'
       }]
     }
   }

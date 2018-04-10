@@ -10,9 +10,6 @@
          <p>拍个片</p>
        </div>
      </div>
-     <div class="cancle">
-       <img src="../../../static/imgs/release/feed_icon_close@3x.png" alt="退出">
-     </div>
   </div>
 </template>
 
@@ -57,14 +54,5 @@ export default {
   .take-picture{
     margin-left: 160rpx;
     margin-right: 166rpx;
-  }
-  .cancle {
-    width: 100%;
-    text-align: center;
-  }
-  .cancle img {
-    width: 76rpx;
-    height: 76rpx;
-    border-radius: 50%;
   }
 </style>

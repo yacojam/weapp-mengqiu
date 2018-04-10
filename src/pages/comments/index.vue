@@ -73,6 +73,7 @@ export default {
 
 .comments-list {
     width: 100%;
+    background-color: #fff;
 }
 .item{
     position: relative;

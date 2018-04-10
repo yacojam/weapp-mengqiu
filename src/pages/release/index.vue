@@ -2,11 +2,11 @@
   <div class="container">
      <div class="content">
        <div class="take-picture">
-         <img src="../../../static/imgs/release/feed_icon_photo@3x.png" alt="挑个片">
+         <img @click="jump('upload')" src="../../../static/imgs/release/feed_icon_photo@3x.png" alt="挑个片">
          <p>挑个片</p>
        </div>
        <div class="take-video">
-         <img src="../../../static/imgs/release/feed_icon_shoot@3x.png" alt="拍个片">
+         <img @click="jump('uploadVideo')" src="../../../static/imgs/release/feed_icon_shoot@3x.png" alt="拍个片">
          <p>拍个片</p>
        </div>
      </div>
@@ -30,6 +30,11 @@ export default {
       })
       wx.showTabBar({
         animation: true
+      })
+    },
+    jump (type) {
+      wx.navigateTo({
+        url: `/pages/${type}/main`
       })
     }
   },

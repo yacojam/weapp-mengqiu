@@ -3,10 +3,10 @@
     <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
-        <img :src="item" alt="">
+        <video :controls="false" :src="item" alt=""></video>
         <img @click="deleteImg(index)" class="delete" src="../../../static/imgs/index/feed_icon_del@3x.png" alt="">
       </div>
-      <img @click="selectImg" src="../../../static/imgs/index/feed_icon_add@3x.png" alt="">
+      <img @click="selectVideo" src="../../../static/imgs/index/feed_icon_add@3x.png" alt="">
     </div>
     <div class="send">
       <img src="../../../static/imgs/index/feed_btn_send_press@3x.png" alt="">
@@ -26,12 +26,13 @@
       }
     },
     methods: {
-      selectImg () {
+      selectVideo () {
         let _this = this
-        wx.chooseImage({
-          count: 9, // 最多可以选择的图片张数，默认9
+        wx.chooseVideo({
           sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
           sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+          compressed: true,
+          maxDuration: 60,
           success: function (res) {
             let imgsrc = res.tempFilePaths
             _this.pics = _this.pics.concat(imgsrc)
@@ -44,7 +45,7 @@
     },
     onShow () {
       if (this.first) {
-        this.selectImg()
+        this.selectVideo()
         this.first = false
       }
     }
@@ -72,6 +73,12 @@
     flex-wrap: wrap;
   }
   .uploadImages img{
+    width: 120rpx;
+    height: 120rpx;
+    margin-left: 30rpx;
+    margin-bottom: 40rpx;
+  }
+  .uploadImages video {
     width: 120rpx;
     height: 120rpx;
     margin-left: 30rpx;

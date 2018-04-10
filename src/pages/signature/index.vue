@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea v-model="text"></textarea>
+    <textarea placeholder="暂无签名" v-model="text"></textarea>
     <div class="send">
       <img src="../../../static/imgs/index/feed_btn_send_press@3x.png" alt="">
     </div>
@@ -23,6 +23,10 @@
     padding-right: 37rpx;
     box-sizing: border-box;
     border-bottom: 1rpx solid $color-splitline;
+  }
+  ._textarea {
+    @include font-32-median;
+    font-weight: normal;
   }
   .send {
     margin-top: 80rpx;

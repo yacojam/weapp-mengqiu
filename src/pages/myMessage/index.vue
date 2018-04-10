@@ -1,17 +1,48 @@
 <template>
   <div>
     <tabs @tabChanged="handleChange" :tabs="['评论','赞']"></tabs>
-    {{text}}
+    <MessageList :list="list"></MessageList>
   </div>
 </template>
 
 <script>
+import MessageList from '@/components/MessageList/MessageList'
 import tabs from '@/components/NavbarTabs/NavbarTabs'
 export default {
   name: 'index',
   data () {
     return {
-      text: ''
+      text: '',
+      list: [
+        {
+          avatar: '../../../static/imgs/index/0.jpg',
+          name: 'Sabar',
+          time: '9:32',
+          img: '../../../static/imgs/index/0.jpg',
+          information: '哈哈哈'
+        },
+        {
+          avatar: '../../../static/imgs/index/0.jpg',
+          name: 'Sabar',
+          time: '9:32',
+          img: '../../../static/imgs/index/0.jpg',
+          information: '哈哈哈'
+        },
+        {
+          avatar: '../../../static/imgs/index/0.jpg',
+          name: 'Sabar',
+          time: '9:32',
+          img: '../../../static/imgs/index/0.jpg',
+          information: '哈哈哈'
+        },
+        {
+          avatar: '../../../static/imgs/index/0.jpg',
+          name: 'Sabar',
+          time: '9:32',
+          img: '../../../static/imgs/index/0.jpg',
+          information: '哈哈哈'
+        }
+      ]
     }
   },
   methods: {
@@ -24,7 +55,7 @@ export default {
     }
   },
   components: {
-    tabs
+    tabs, MessageList
   }
 }
 </script>

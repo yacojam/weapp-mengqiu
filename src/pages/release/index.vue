@@ -23,6 +23,19 @@ export default {
   methods: {
   },
   created () {
+  },
+  onShow () {
+    wx.setNavigationBarColor({
+      frontColor: '#000000',
+      backgroundColor: '#f1f1fa',
+      animation: {
+        duration: 400,
+        timingFunc: 'easeIn'
+      }
+    })
+    wx.hideTabBar({
+      animation: true
+    })
   }
 }
 </script>

@@ -3,7 +3,7 @@
     <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
-        <video :controls="false" :src="item" alt=""></video>
+        <video :show-play-btn="false" objectFit="fill" :controls="false" :src="item" alt=""></video>
         <img @click="deleteImg(index)" class="delete" src="../../../static/imgs/index/feed_icon_del@3x.png" alt="">
       </div>
       <img @click="selectVideo" src="../../../static/imgs/index/feed_icon_add@3x.png" alt="">
@@ -34,7 +34,7 @@
           compressed: true,
           maxDuration: 60,
           success: function (res) {
-            let imgsrc = res.tempFilePaths
+            let imgsrc = res.tempFilePath
             _this.pics = _this.pics.concat(imgsrc)
           }
         })

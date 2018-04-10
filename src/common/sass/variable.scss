@@ -69,6 +69,7 @@ $color-message-less: #4c4c4c;
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
+  border:4rpx solid #000;
 }
 @mixin image-avatar-small {
   width: 66rpx;

@@ -77,9 +77,7 @@ export default {
     display:flex;
   }
   .top .avatar{
-    width: 168rpx;
-    height: 168rpx;
-    border-radius: 50%;
+    @include image-avatar-large;
   }
   .top p {
     margin-left: 36rpx;

@@ -59,6 +59,7 @@ export default {
 
 .user-shows-content {
   padding: 40rpx 0 0;
+  background-color: #fff;
 }
 .info,
 .head-portrait {
@@ -85,12 +86,12 @@ export default {
 .time .subtime {
   margin-right: 12rpx;
 }
-.recommend .title {
+.user-shows-content .title {
   font-size: 32rpx;
   font-family: "PingFang SC";
   margin-bottom: 30rpx;
 }
-.recommend .big-show img {
+.user-shows-content .big-show img {
   width: 100%;
   height: 500rpx;
 }

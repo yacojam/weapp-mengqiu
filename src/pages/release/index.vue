@@ -10,6 +10,9 @@
          <p>拍个片</p>
        </div>
      </div>
+    <div class="back">
+      <img @click="backIndexPage" src="../../../static/imgs/release/feed_icon_close@3x.png" alt="">
+    </div>
   </div>
 </template>
 
@@ -21,6 +24,14 @@ export default {
   },
   components: {},
   methods: {
+    backIndexPage () {
+      wx.switchTab({
+        url: `/pages/index/main`
+      })
+      wx.showTabBar({
+        animation: true
+      })
+    }
   },
   created () {
   },
@@ -67,5 +78,16 @@ export default {
   .take-picture{
     margin-left: 160rpx;
     margin-right: 166rpx;
+  }
+  .back {
+    width: 100%;
+    text-align:center;
+    position:absolute;
+    left: 0;
+    bottom: 10rpx;
+  }
+  .back img {
+    width: 75rpx;
+    height: 75rpx;
   }
 </style>

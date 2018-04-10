@@ -4,7 +4,8 @@
       <img @click="handleClick" class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
-        <span class="des">{{user.des}}</span>
+        <span class="des">{{user.des}}<img @click="handleAlter" class="alter" src="../../../static/imgs/index/user_icon_sign@3x.png" alt=""></span>
+
       </p>
     </div>
     <div class="center">
@@ -54,6 +55,11 @@ export default {
       wx.navigateTo({
         url: '/pages/myMessage/main'
       })
+    },
+    handleAlter () {
+      wx.navigateTo({
+        url: '/pages/signature/main'
+      })
     }
   }
 }
@@ -83,9 +89,15 @@ export default {
     @include font-46;
   }
   .top .des {
+    display:flex;
     @include font-26-normal;
     margin-top: 24rpx;
     opacity: 0.7;
+    img {
+      margin-left: 20rpx;
+      width: 30rpx;
+      height: 30rpx;
+    }
   }
   .center {
     width: 100%;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea v-model="text" show-confirm-bar placeholder="给萌球配上文字..."  name="" id="" cols="30"></textarea>
+    <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
         <img :src="item" alt="">

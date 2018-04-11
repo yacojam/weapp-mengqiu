@@ -44,9 +44,14 @@
     },
     onShow () {
       if (this.first) {
-        this.selectImg()
+        let imgsrc = wx.getStorageSync('uploadImgs')
+        this.pics = this.pics.concat(imgsrc)
         this.first = false
       }
+    },
+    onUnload () {
+      this.pics = []
+      this.first = true
     }
   }
 </script>

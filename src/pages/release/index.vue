@@ -2,11 +2,11 @@
   <div class="container">
      <div class="content">
        <div class="take-picture">
-         <img @click="jump('upload')" src="../../../static/imgs/release/feed_icon_photo@3x.png" alt="挑个片">
+         <img @click="directToUploadImg" src="../../../static/imgs/release/feed_icon_photo@3x.png" alt="挑个片">
          <p>挑个片</p>
        </div>
        <div class="take-video">
-         <img @click="jump('uploadVideo')" src="../../../static/imgs/release/feed_icon_shoot@3x.png" alt="拍个片">
+         <img @click="directToUploadVideo" src="../../../static/imgs/release/feed_icon_shoot@3x.png" alt="拍个片">
          <p>拍个片</p>
        </div>
      </div>
@@ -32,9 +32,33 @@ export default {
         animation: true
       })
     },
-    jump (type) {
-      wx.navigateTo({
-        url: `/pages/${type}/main`
+    directToUploadImg () {
+      wx.chooseImage({
+        count: 9, // 最多可以选择的图片张数，默认9
+        sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+        success: function (res) {
+          let imgsrc = res.tempFilePaths
+          wx.setStorageSync('uploadImgs', imgsrc)
+          wx.navigateTo({
+            url: '/pages/upload/main'
+          })
+        }
+      })
+    },
+    directToUploadVideo () {
+      wx.chooseVideo({
+        sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+        compressed: true,
+        maxDuration: 60,
+        success: function (res) {
+          let videoSrc = res.tempFilePath
+          wx.setStorageSync('uploadVideo', videoSrc)
+          wx.navigateTo({
+            url: '/pages/uploadVideo/main'
+          })
+        }
       })
     }
   },

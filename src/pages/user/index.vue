@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="top">
-      <img @click="jump('consumer')" class="avatar" :src="user.avatar" alt="">
+      <img class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
         <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="../../../static/imgs/index/user_icon_sign@3x.png" alt=""></span>
@@ -10,7 +10,7 @@
     </div>
     <div class="center">
       <ul>
-        <li @click="jump('upload')"><p>{{user.publish}}</p><p>发布</p></li>
+        <li @click="jump('consumer')"><p>{{user.publish}}</p><p>发布</p></li>
         <li @click="jump('concern')"><p>{{user.fellow}}</p><p>关注</p></li>
         <li @click="jump('fans')"><p>{{user.fans}}</p><p>粉丝</p></li>
       </ul>

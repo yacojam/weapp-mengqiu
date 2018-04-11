@@ -1,19 +1,23 @@
 <template>
     <div class="container">
-        <lists :from="type"></lists>
+        <lists :from="type" v-if="!empty"></lists>
+        <empty-template :type="type" v-if="empty"></empty-template>
     </div>
 </template>
 
 <script>
 import lists from '@/components/lists'
+import emptyTemplate from '@/components/emptyTemplate'
 
 export default {
   components: {
-    lists
+    lists,
+    emptyTemplate
   },
   data () {
     return {
-      type: 'concern'
+      type: 'concern',
+      empty: true
     }
   },
   methods: {},

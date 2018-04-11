@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-      <div class="comments-list">
+      <div class="comments-list" v-if="!empty">
           <div class="item">
               <div class="head-img">
                   <img src="../../../static/imgs/index/0.jpg" alt="用户头像">
@@ -23,6 +23,9 @@
               <div class="time"><span class="subtime">昨天</span>09:21</div>
           </div>
       </div>
+
+      <empty-template :type="type" v-if="empty"></empty-template>
+
       <div class="add-comment">
           <input type="text" placeholder="发表评论..." class="inputs">
           <span class="submit">发表</span>
@@ -31,12 +34,18 @@
 </template>
 
 <script>
+import emptyTemplate from '@/components/emptyTemplate'
+
 export default {
+  components: {
+    emptyTemplate
+  },
   data () {
     return {
+      empty: true,
+      type: 'comments'
     }
   },
-  components: {},
   methods: {
   },
   created () {
@@ -45,32 +54,6 @@ export default {
 </script>
 
 <style scoped>
-/*placeholder字体颜色*/  
-::-webkit-input-placeholder { /* WebKit browsers */  
-    font-family: 'PingFang SC';
-    color: #000;
-    font-size: 32rpx;
-    opacity: .5;
-}  
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  
-    font-family: 'PingFang SC';
-    color: #000;
-    font-size: 32rpx;
-    opacity: .5;
-}  
-::-moz-placeholder { /* Mozilla Firefox 19+ */  
-     font-family: 'PingFang SC';
-    color: #000;
-    font-size: 32rpx;
-    opacity: .5;
-}  
-:-ms-input-placeholder { /* Internet Explorer 10+ */  
-     font-family: 'PingFang SC';
-    color: #000;
-    font-size: 32rpx;
-    opacity: .5; 
-}
-
 .comments-list {
     width: 100%;
     background-color: #fff;

@@ -17,19 +17,19 @@
 
         <div class="operate left-correction">
             <span class="like">
-                <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="like">
-            </span>
-            <span class="forward">
-                <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
-            </span>
-            <span class="give-like">
                 <img src="/static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
             </span>
             <span class="likes-counts">36</span>
-            <a href="/pages/comments/main" class="comments">
+            <a href="/pages/details/main" class="comments">
                 <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
             </a>
             <span class="comments-counts">11</span>
+            <span class="forward">
+                <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
+            </span>
+            <span v-if="showStar" class="star">
+                <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
+            </span>
         </div>
 
         <div class="bottom-line"></div>
@@ -40,6 +40,12 @@
 export default {
   data () {
     return {}
+  },
+  props: {
+    showStar: {
+      type: Boolean,
+      'default': false
+    }
   },
   methods: {},
   created () {}
@@ -100,6 +106,7 @@ export default {
   align-items: center;
   padding-top: 30rpx;
   padding-bottom: 30rpx;
+  position: relative;
 }
 .operate img {
   width: 46rpx;
@@ -115,11 +122,15 @@ export default {
 }
 .operate .like,
 .operate .forward {
-  margin-right: 46rpx;
+  margin-right: 16rpx;
 }
-.operate .give-like,
 .operate .comments {
   margin-right: 16rpx;
+}
+.operate .star {
+  position: absolute;
+  top: 30rpx;
+  right: 40rpx;
 }
 
 .bottom-line {

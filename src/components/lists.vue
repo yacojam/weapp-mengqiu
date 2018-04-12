@@ -3,14 +3,14 @@
         <div class="list-item">
             <div class="left">
                 <div class="head">
-                    <img src="../../static/imgs/index/0.jpg" alt="示例图">
+                    <img src="/static/imgs/index/0.jpg" alt="示例图">
                 </div>
                 <div class="name">
                     暗示打算打死的
                 </div>
             </div>
             <div class="operate">
-                <img src="../../static/imgs/lists/fans_btn_followed@2x.png" alt="示例图">
+                <img src="/static/imgs/lists/fans_btn_followed@2x.png" alt="示例图">
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
   <div>
     <textarea placeholder="暂无签名" v-model="text"></textarea>
     <div class="send">
-      <img src="../../../static/imgs/index/feed_btn_send_press@3x.png" alt="">
+      <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
     </div>
   </div>
 </template>

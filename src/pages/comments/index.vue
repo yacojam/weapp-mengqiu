@@ -3,7 +3,7 @@
       <div class="comments-list" v-if="!empty">
           <div class="item">
               <div class="head-img">
-                  <img src="../../../static/imgs/index/0.jpg" alt="用户头像">
+                  <img src="/static/imgs/index/0.jpg" alt="用户头像">
               </div>
               <div class="details">
                   <p class="name">可爱小姐姐</p>
@@ -14,7 +14,7 @@
 
            <div class="item">
               <div class="head-img">
-                  <img src="../../../static/imgs/index/0.jpg" alt="用户头像">
+                  <img src="/static/imgs/index/0.jpg" alt="用户头像">
               </div>
               <div class="details">
                   <p class="name">可爱小姐姐</p>

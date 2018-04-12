@@ -1,7 +1,7 @@
 <template>
     <div class="user-shows-content">
         <div class="head-portrait left-correction">
-            <img src="../../static/imgs/material/1.jpg" alt="用户头像">
+            <img src="/static/imgs/default.png" alt="用户头像">
         </div>
         <div class="info">
             <p class="name">Sabar</p>
@@ -12,22 +12,22 @@
         <p class="title left-correction">这种天气最适合带着丫丫出去遛弯儿啦~~</p>
 
         <div class="big-show">
-            <img src="../../static/imgs//material/3.jpg" alt="展示用大图" mode="scaleToFill" width="100%">
+            <img src="/static/imgs/material/1.png" alt="展示用大图" mode="scaleToFill" width="100%">
         </div>
 
         <div class="operate left-correction">
             <span class="like">
-                <img src="../../static/imgs/index/feed_icon_collect_nor@2x.png" alt="like">
+                <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="like">
             </span>
             <span class="forward">
-                <img src="../../static/imgs/index/feed_icon_share@2x.png" alt="like">
+                <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
             </span>
             <span class="give-like">
-                <img src="../../static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
+                <img src="/static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
             </span>
             <span class="likes-counts">36</span>
             <a href="/pages/comments/main" class="comments">
-                <img src="../../static/imgs/index/feed_icon_comment@2x.png" alt="like">
+                <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
             </a>
             <span class="comments-counts">11</span>
         </div>

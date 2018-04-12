@@ -8,7 +8,7 @@
       <p class="des">{{des}}</p>
       <p class="fellow"><span>{{fellow}}</span>关注 <span>{{fans}}</span>粉丝</p>
       <div>
-        <img class="fansBtn" src="../../../static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
+        <img class="fansBtn" src="/static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
       </div>
     </div>
 
@@ -30,21 +30,21 @@ export default {
       isFellowed: true,
       photoNum: 18,
       photos: [
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg'
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg'
       ]
     }
   },

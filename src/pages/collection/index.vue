@@ -10,21 +10,21 @@ export default {
   data () {
     return {
       photos: [
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg',
-        '../../../static/imgs/index/0.jpg'
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg',
+        '/static/imgs/index/0.jpg'
       ]
     }
   },

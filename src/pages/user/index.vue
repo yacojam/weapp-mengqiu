@@ -4,7 +4,7 @@
       <img class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
-        <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="../../../static/imgs/index/user_icon_sign@3x.png" alt=""></span>
+        <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="/static/imgs/index/user_icon_sign@3x.png" alt=""></span>
 
       </p>
     </div>
@@ -31,7 +31,7 @@ export default {
   data () {
     return {
       user: {
-        avatar: '/static/imgs/index/0.jpg',
+        avatar: '/static/imgs/default.png',
         name: 'Andrew',
         des: '你们地球人就喜欢猜',
         publish: 0,

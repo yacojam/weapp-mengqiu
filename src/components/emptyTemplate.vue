@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     emptyTypeUrl: function () {
-      return `../../static/imgs/empty/empty-${this.type}@2x.png`
+      return `/static/imgs/empty/empty-${this.type}@2x.png`
     }
   },
   methods: {},

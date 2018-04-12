@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="logo animated" :style="{ opacity: logoOpacity,display: logoDisplay }">
-      <img src="../../../static/imgs/default.png" alt="logo图">
+      <img src="/static/imgs/default.png" alt="logo图">
     </div>
       <div class="animated" :style="{ opacity , display}">
         <div class="header-bar">

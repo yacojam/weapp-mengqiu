@@ -12,13 +12,14 @@
 </script>
 
 <style>
+page {
+  background-color: #f1f1fa;
+  height: 100%;
+}
   .container {
-    height: 100%;
     justify-content: space-between;
     box-sizing: border-box;
-    position: fixed;
     width: 100%;
-    top: 0;
     background-color: #f1f1fa;
   }
   /* this rule will be remove */

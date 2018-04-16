@@ -16,7 +16,8 @@ export default {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#FFE955',
       navigationBarTitleText: '萌球社区',
-      navigationBarTextStyle: 'black'
+      navigationBarTextStyle: 'black',
+      backgroundColor: '#f1f1fa'
     },
     tabBar: {
       list: [{

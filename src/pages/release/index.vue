@@ -25,11 +25,11 @@ export default {
   components: {},
   methods: {
     backIndexPage () {
-      wx.switchTab({
-        url: `/pages/index/main`
-      })
       wx.showTabBar({
         animation: true
+      })
+      wx.switchTab({
+        url: `/pages/index/main`
       })
     },
     directToUploadImg () {

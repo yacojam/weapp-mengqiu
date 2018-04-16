@@ -1,16 +1,16 @@
 <template>
     <div class="lists">
-        <div class="list-item">
+        <div class="list-item" v-for="(item, index) in listData" :key="index">
             <div class="left">
                 <div class="head">
-                    <img src="/static/imgs/index/0.jpg" alt="示例图">
+                    <img :src="item.headLogo" alt="示例图">
                 </div>
                 <div class="name">
-                    暗示打算打死的
+                    {{ item.name }}
                 </div>
             </div>
             <div class="operate">
-                <img src="/static/imgs/lists/fans_btn_followed@2x.png" alt="示例图">
+                <img :src="'/static/imgs/lists/fans_btn_'+item.status+'@2x.png'" alt="示例图">
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
 <script>
 export default {
   name: ' lists',
-  props: ['from'],
+  props: ['from', 'listData'],
   data () {
     return {}
   },

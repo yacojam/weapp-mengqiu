@@ -1,18 +1,19 @@
 <template>
-    <div class="user-shows-content">
+    <div class="user-shows-content" >
+      <div v-for="(item, index) in lifeStatusData" :key="index" class="items">
         <div class="head-portrait left-correction">
-            <img src="/static/imgs/default.png" alt="用户头像">
+            <img :src="item.headLogo" alt="用户头像">
         </div>
         <div class="info">
-            <p class="name">Sabar</p>
+            <p class="name">{{ item.name }}</p>
             <p class="time">
-                <span class="subtime">昨天</span>09:32</p>
+                <span class="subtime">{{ item.subtime }}</span>{{ item.time }}</p>
         </div>
 
-        <p class="title left-correction">这种天气最适合带着丫丫出去遛弯儿啦~~</p>
+        <p class="title left-correction">{{ item.title }}</p>
 
         <div class="big-show">
-            <img src="/static/imgs/material/1.png" alt="展示用大图" mode="scaleToFill" width="100%">
+            <img :src="item.imgSrc" alt="展示用大图" mode="scaleToFill" width="100%">
         </div>
 
         <div class="operate left-correction">
@@ -33,13 +34,33 @@
         </div>
 
         <div class="bottom-line"></div>
+      </div>
     </div>
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      lifeStatusData: [
+        {
+          name: 'Sabar',
+          time: '09:32',
+          subtime: '昨天',
+          headLogo: '/static/imgs/default.png',
+          title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
+          imgSrc: '/static/imgs/material/1.png'
+        },
+        {
+          name: 'Aaron',
+          time: '11:22',
+          subtime: '',
+          headLogo: '/static/imgs/material/1.png',
+          title: '最喜欢我家的小狗狗了~~！',
+          imgSrc: '/static/imgs/material/1.png'
+        }
+      ]
+    }
   },
   methods: {},
   created () {}
@@ -47,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+.items {
+  padding-top: 40rpx;
+}
 .left-correction {
   padding-left: 40rpx;
 }
@@ -58,7 +82,7 @@ export default {
 }
 
 .user-shows-content {
-  padding: 40rpx 0 0;
+  padding:0 0;
   background-color: #fff;
 }
 .info,

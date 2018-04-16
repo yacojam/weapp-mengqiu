@@ -1,26 +1,15 @@
 <template>
   <div class="container">
       <div class="comments-list" v-if="!empty">
-          <div class="item">
+          <div class="item" v-for="(item, index) in commentsData" :key="index">
               <div class="head-img">
-                  <img src="/static/imgs/index/0.jpg" alt="用户头像">
+                  <img :src="item.headLogo" alt="用户头像">
               </div>
               <div class="details">
-                  <p class="name">可爱小姐姐</p>
-                  <p class="words">猫咪这么可爱，和我家的好像啊！</p>
+                  <p class="name">{{ item.name }}</p>
+                  <p class="words">{{ item.comments }}</p>
               </div>
-              <div class="time"><span class="subtime">昨天</span>09:21</div>
-          </div>
-
-           <div class="item">
-              <div class="head-img">
-                  <img src="/static/imgs/index/0.jpg" alt="用户头像">
-              </div>
-              <div class="details">
-                  <p class="name">可爱小姐姐</p>
-                  <p class="words">猫咪这么可爱，和我家的好像啊！</p>
-              </div>
-              <div class="time"><span class="subtime">昨天</span>09:21</div>
+              <div class="time"><span class="subtime">{{ item.subtime }}</span>{{ item.time }}</div>
           </div>
       </div>
 
@@ -42,8 +31,23 @@ export default {
   },
   data () {
     return {
-      empty: true,
-      type: 'comments'
+      empty: false,
+      type: 'comments',
+      commentsData: [
+        {
+          name: '可爱小姐姐',
+          comments: '猫咪这么可爱，和我家的好像啊！',
+          time: '09:32',
+          subtime: '昨天',
+          headLogo: '/static/imgs/index/0.jpg'
+        },
+        {
+          name: '纸短情长',
+          comments: '放弃了我的所有我的一切无所谓',
+          time: '09:32',
+          headLogo: '/static/imgs/material/1.png'
+        }
+      ]
     }
   },
   methods: {

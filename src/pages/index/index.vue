@@ -21,6 +21,8 @@
 
 <script>
 import dynamicDetails from '@/components/dynamicDetails'
+import fly from '../../../utils/mqIO.js'
+
 export default {
   data () {
     return {
@@ -55,6 +57,14 @@ export default {
       that.opacity = 1
       that.display = 'block'
     }, 2000)
+
+    fly.post('/mq/moments/detail?id=1&userid=1')
+      .then(function (response) {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   },
 
   onShow () {

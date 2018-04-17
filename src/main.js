@@ -27,15 +27,16 @@ export default {
         selectedIconPath: './static/imgs/index/icon_home_sel@3x.png'
       }, {
         pagePath: 'pages/release/main',
-        text: '发布',
-        iconPath: './static/imgs/index/icon_send@3x.png',
-        selectedIconPath: './static/imgs/index/icon_send@3x.png'
+        text: '萌窝',
+        iconPath: './static/imgs/index/icon_pet_nor@3x.png',
+        selectedIconPath: './static/imgs/index/icon_pet_sel@3x.png'
       }, {
         pagePath: 'pages/user/main',
-        text: '铲屎官',
+        text: '我的',
         iconPath: './static/imgs/index/icon_user_nor@3x.png',
         selectedIconPath: './static/imgs/index/icon_user_sel@3x.png'
-      }]
+      }],
+      selectedColor: '#000000'
     }
   }
 }

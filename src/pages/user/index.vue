@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import fly from '../../../utils/mqIO'
 export default {
   data () {
     return {
@@ -45,7 +46,19 @@ export default {
       wx.navigateTo({
         url: `/pages/${type}/main`
       })
+    },
+    getUserInfo () {
+      let userid = wx.getStorageSync('uid')
+      console.log(userid)
+      fly.get('http://apis.starluo.com/profiles/' + userid).then((res) => {
+        // console.log(res)
+      })
     }
+  },
+  created () {
+  },
+  mounted () {
+    this.getUserInfo()
   }
 }
 </script>

@@ -4,7 +4,7 @@
     <div v-if="videoPath !== ''" class="uploadVideo">
       <video controls id="myVideo" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="videoPath" alt=""></video>
     </div>
-    <div class="send">
+    <div @click="publish" class="send">
       <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
     </div>
   </div>
@@ -12,12 +12,38 @@
 </template>
 
 <script>
+  import fly from '../../../utils/mqIO'
   export default {
     name: 'index',
     data () {
       return {
         videoPath: '',
         text: ''
+      }
+    },
+    methods: {
+      // 发布视频动态
+      publish () {
+        fly.post('mq/moments/publish', {
+          'type_id': 2,
+          'text': this.text,
+          'video_link': this.videoPath
+        }).then((res) => {
+          // 上传成功
+          console.log(res)
+          if (res.code === 1) {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success'
+            })
+          } else {
+            // 上传失败
+            wx.showToast({
+              title: '发布失败',
+              icon: 'success'
+            })
+          }
+        })
       }
     },
     onShow () {

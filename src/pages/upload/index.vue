@@ -8,7 +8,7 @@
       </div>
       <img @click="selectImg" src="/static/imgs/index/feed_icon_add@3x.png" alt="">
     </div>
-    <div class="send">
+    <div @click="publish" class="send">
       <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
     </div>
   </div>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import fly from '../../../utils/mqIO'
   export default {
     name: 'index',
     data () {
@@ -40,6 +41,28 @@
       },
       deleteImg (index) {
         this.pics.splice(index, 1)
+      },
+      // 发布图片动态
+      publish () {
+        fly.post('mq/moments/publish', {
+          'type_id': 1,
+          'text': this.text,
+          'img_list': this.pics
+        }).then((res) => {
+          // 上传成功
+          if (res.code === 1) {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success'
+            })
+          } else {
+          // 上传失败
+            wx.showToast({
+              title: '发布失败',
+              icon: 'success'
+            })
+          }
+        })
       }
     },
     onShow () {

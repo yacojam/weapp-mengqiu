@@ -28,8 +28,11 @@
                 fly.post('user/mq/loginByOpenAuthCode', {
                   nickName, avatarUrl, gender, province, city, country, code: Code
                 }).then((res) => {
-                  fly.config.uid = res.uid
-                  fly.config.token = res.token
+                  console.log(res)
+                  fly.config.headers['x-cert-uid'] = res.data.uid
+                  fly.config.headers['x-cert-token'] = res.data.token
+                  wx.setStorageSync('uid', res.data.uid)
+                  // wx.setStorageSync('token', res.data.token)
                 })
               }
             })

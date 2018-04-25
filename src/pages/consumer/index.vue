@@ -12,13 +12,16 @@
       </div>
     </div>
 
-    <latest-release-list :photos="photos"></latest-release-list>
-    
+    <!--<latest-release-list :photos="photos"></latest-release-list>-->
+    <PublishList :publishList="publishList"></PublishList>
+
   </div>
 </template>
 
 <script>
+import fly from '@/../utils/mqIO'
 import latestReleaseList from '@/components/latestReleaseList'
+import PublishList from '@/components/PublishList/PublishList'
 export default {
   data () {
     return {
@@ -38,6 +41,11 @@ export default {
         '/static/imgs/index/0.jpg',
         '/static/imgs/index/0.jpg',
         '/static/imgs/index/0.jpg'
+      ],
+      lookUserId: 0,
+      page: 1,
+      size: 10,
+      publishList: [
       ]
     }
   },
@@ -46,10 +54,32 @@ export default {
       wx.navigateTo({
         url: `/pages/${type}/main`
       })
+    },
+    getUserRelease () {
+      if (this.lookUserId === 0) {
+        this.publishList = []
+        return
+      }
+      fly.post('mq/moments/list', {
+        page: this.page,
+        size: this.size,
+        'look_user_id': this.lookUserId
+      }).then((res) => {
+        if (res.code === 1) {
+          this.publishList = res.data.list
+          console.log(res.data.list)
+        }
+      }).catch(res => {
+        console.log(res)
+      })
     }
   },
   components: {
-    latestReleaseList
+    latestReleaseList, PublishList
+  },
+  onLoad (options) {
+    this.lookUserId = options.lookUserId
+    this.getUserRelease()
   }
 }
 </script>
@@ -95,5 +125,5 @@ export default {
     height: 68rpx;
     margin-top: 25rpx;
   }
-  
+
 </style>

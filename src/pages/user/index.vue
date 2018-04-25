@@ -10,7 +10,9 @@
     </div>
     <div class="center">
       <ul>
-        <li @click="jump('consumer')"><p>{{user.publish}}</p><p>发布</p></li>
+        <li @click="jump('consumer',{
+          lookUserId: userid
+        })"><p>{{user.publish}}</p><p>发布</p></li>
         <li @click="jump('concern')"><p>{{user.fellow}}</p><p>关注</p></li>
         <li @click="jump('fans')"><p>{{user.fans}}</p><p>粉丝</p></li>
       </ul>
@@ -27,7 +29,7 @@
 </template>
 
 <script>
-import fly from '../../../utils/mqIO'
+// import fly from '../../../utils/mqIO'
 export default {
   data () {
     return {
@@ -37,22 +39,31 @@ export default {
         des: '你们地球人就喜欢猜',
         publish: 0,
         fellow: 0,
-        fans: 0
+        fans: 0,
+        userid: 0
       }
     }
   },
   methods: {
-    jump (type) {
+    jump (type, query) {
+      let url = `/pages/${type}/main`
+      // url添加query参数
+      if (query) {
+        url += '?'
+        for (let key in query) {
+          url += `${key}=${query[key]}&`
+        }
+        url = url.substr(0, url.length - 1)
+      }
       wx.navigateTo({
-        url: `/pages/${type}/main`
+        url: url
       })
     },
     getUserInfo () {
       let userid = wx.getStorageSync('uid')
-      console.log(userid)
-      fly.get('http://apis.starluo.com/profiles/' + userid).then((res) => {
-        // console.log(res)
-      })
+      this.userid = userid
+      // fly.get('http://apis.starluo.com/profiles/' + userid).then((res) => {
+      // })
     }
   },
   created () {

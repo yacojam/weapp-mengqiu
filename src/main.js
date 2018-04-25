@@ -26,7 +26,7 @@ export default {
         iconPath: './static/imgs/index/icon_home_nor@3x.png',
         selectedIconPath: './static/imgs/index/icon_home_sel@3x.png'
       }, {
-        pagePath: 'pages/release/main',
+        pagePath: 'pages/petNest/main',
         text: '萌窝',
         iconPath: './static/imgs/index/icon_pet_nor@3x.png',
         selectedIconPath: './static/imgs/index/icon_pet_sel@3x.png'

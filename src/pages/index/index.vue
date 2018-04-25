@@ -10,25 +10,44 @@
         </div>
 
         <div class="recommend">
-          <dynamic-details></dynamic-details>
+          <dynamic-details :lifeStatusData="lifeStatusData"></dynamic-details>
         </div>
 
         <div class="attention"></div>
       </div>
-
+    <div @click="jump('release')" class="write">
+      <img src="/static/imgs/index/feed_btn_write_nor@3x.png" alt="">
+    </div>
   </div>
 </template>
 
 <script>
 import dynamicDetails from '@/components/dynamicDetails'
-import fly from '../../../utils/mqIO.js'
 
 export default {
   data () {
     return {
       showRecommend: true,
       opacity: 0,
-      display: 'none'
+      display: 'none',
+      lifeStatusData: [
+        {
+          name: 'Sabar',
+          time: '09:32',
+          subtime: '昨天',
+          headLogo: '/static/imgs/default.png',
+          title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
+          imgSrc: ['/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png', '/static/imgs/material/1.png']
+        },
+        {
+          name: 'Aaron',
+          time: '11:22',
+          subtime: '',
+          headLogo: '/static/imgs/material/1.png',
+          title: '最喜欢我家的小狗狗了~~！',
+          imgSrc: ['/static/imgs/material/1.png']
+        }
+      ]
     }
   },
   components: {
@@ -47,9 +66,14 @@ export default {
   methods: {
     changeContent (type) {
       (type === 'recommend') ? this.showRecommend = true : this.showRecommend = false
+    },
+    jump (type) {
+      console.log(type)
+      wx.navigateTo({
+        url: `/pages/${type}/main`
+      })
     }
   },
-
   created () {
     let that = this
     setTimeout(() => {
@@ -57,14 +81,6 @@ export default {
       that.opacity = 1
       that.display = 'block'
     }, 2000)
-
-    fly.post('/mq/moments/detail?id=1&userid=1')
-      .then(function (response) {
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
   },
 
   onShow () {
@@ -87,6 +103,7 @@ export default {
   height: 100%;
   position: fixed;
   top: 0;
+  z-index: 10;
 }
 .logo img {
   width: 100%;
@@ -112,5 +129,15 @@ export default {
   color: #000;
   margin-left: 50rpx;
 }
+.write {
+  position: fixed;
+  right: 28rpx;
+  bottom: 5rpx;
+}
+.write img {
+  width: 124rpx;
+  height: 140rpx;
+}
+
 
 </style>

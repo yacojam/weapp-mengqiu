@@ -1,30 +1,34 @@
 <template>
     <div class="user-shows-content" >
-      <div v-for="(item, index) in lifeStatusData" :key="index" class="items">
+      <div v-for="(item, index) in listData" :key="index" class="items">
         <div class="head-portrait left-correction">
             <img :src="item.headLogo" alt="用户头像">
         </div>
         <div class="info">
             <p class="name">{{ item.name }}</p>
             <p class="time">
-                <span class="subtime">{{ item.subtime }}</span>{{ item.time }}</p>
+              <span class="subtime">{{ item.subtime }}</span>{{ item.time }}
+            </p>
+        </div>
+        <div class="delete-btn" @click="showDelete">
+          <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
         </div>
 
         <p class="title left-correction">{{ item.title }}</p>
 
         <div class="big-show">
-            <img :src="item.imgSrc" alt="展示用大图" mode="scaleToFill" width="100%">
+            <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="scaleToFill">
         </div>
-
+<!-- :class="['more',item.imgSrc.length > 1 && item.imgSrc.length < 5 ? 'normal': 'less']" -->
         <div class="operate left-correction">
-            <span class="like">
-                <img src="/static/imgs/index/feed_icon_like_nor@2x.png" alt="like">
+            <span class="like" @click="toggleLove">
+                <img :src="lovedImgUrl" alt="like">
             </span>
-            <span class="likes-counts">36</span>
-            <a href="/pages/details/main" class="comments">
+            <span class="likes-counts">{{ loveNum }}</span>
+            <span class="comments">
                 <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
-            </a>
-            <span class="comments-counts">11</span>
+            </span>
+            <span class="comments-counts">{{ commentNum }}</span>
             <span class="forward">
                 <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
             </span>
@@ -39,43 +43,113 @@
 </template>
 
 <script>
+import fly from '../../utils/mqIO'
+
 export default {
   data () {
     return {
-      lifeStatusData: [
-        {
-          name: 'Sabar',
-          time: '09:32',
-          subtime: '昨天',
-          headLogo: '/static/imgs/default.png',
-          title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
-          imgSrc: '/static/imgs/material/1.png'
-        },
-        {
-          name: 'Aaron',
-          time: '11:22',
-          subtime: '',
-          headLogo: '/static/imgs/material/1.png',
-          title: '最喜欢我家的小狗狗了~~！',
-          imgSrc: '/static/imgs/material/1.png'
-        }
-      ]
+      imgList: [
+        '/static/imgs/index/feed_icon_like_nor@2x.png'
+      ],
+      loved: false
     }
   },
   props: {
     showStar: {
       type: Boolean,
       'default': false
+    },
+    lifeStatusData: {
+      type: Array
+    },
+    loveNum: {
+      type: Number,
+      default: 0
+    },
+    commentNum: {
+      type: Number,
+      default: 0
+    },
+    refId: {
+      type: Number,
+      default: 0
     }
   },
-  methods: {},
-  created () {}
+  methods: {
+    showDelete () {
+      let that = this
+      wx.showActionSheet({
+        itemList: ['删除'],
+        itemColor: '#FF0000',
+        success: res => {
+          wx.showModal({
+            title: '删除提示',
+            content: '  确定删除这条动态吗',
+            confirmText: '删除',
+            success: res => {
+              fly.post('/mq/moments/delete', {
+                id: that.refId
+              }).then(res => {
+                console.log(res)
+              }).catch(res => {
+                console.log(res)
+              })
+            }
+          })
+        }
+      })
+    },
+    // 点赞和取消点赞
+    toggleLove () {
+      let that = this
+      let _url = ''
+      that.loved ? _url = 'cancel' : _url = 'execute'
+      console.log(_url)
+      fly.post(`/information/${_url}/love`, {
+        type_id: 7,
+        ref_id: that.refId
+      })
+      .then((res) => {
+        if (res.code === 1) {
+          if (that.loved) {
+            that.loveNum -= 1
+          } else {
+            that.loveNum += 1
+          }
+          that.loved = !that.loved
+        }
+      })
+    }
+  },
+  created () {},
+  computed: {
+    listData () {
+      let _data = this.lifeStatusData
+      let className = 'less'
+      for (let i in _data) {
+        if (_data[i].imgSrc.length > 4) {
+          className = 'more'
+        }
+        if (_data[i].imgSrc.length >= 2 && _data[i].imgSrc.length <= 4) {
+          className = 'normal'
+        }
+        _data[i] = Object.assign(_data[i], { className })
+
+        className = 'less'
+      }
+      return _data
+    },
+    lovedImgUrl () {
+      return this.loved ? '/static/imgs/index/feed_icon_like_sel@2x.png' : '/static/imgs/index/feed_icon_like_nor@2x.png'
+    }
+  }
 }
 </script>
 
 <style scoped>
 .items {
   padding-top: 40rpx;
+  position: relative;
 }
 .left-correction {
   padding-left: 40rpx;
@@ -121,9 +195,24 @@ export default {
   font-family: "PingFang SC";
   margin-bottom: 30rpx;
 }
-.user-shows-content .big-show img {
+.big-show {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.user-shows-content .big-show img.less {
   width: 100%;
   height: 500rpx;
+}
+.user-shows-content .big-show img.normal {
+  width: 372rpx;
+  height: 372rpx;
+  margin-bottom: 8rpx;
+}
+.user-shows-content .big-show img.more {
+  width: 246rpx;
+  height: 246rpx;
+  margin-bottom: 6rpx;
 }
 .operate {
   display: flex;
@@ -161,6 +250,21 @@ export default {
   width: 100%;
   background-color: #f1f1fa;
   height: 18rpx;
+}
+
+.delete-btn {
+  width: 50rpx;
+  height: 10rpx;
+  padding: 20rpx;
+  position: absolute;
+  top: 45rpx;
+  right: 40rpx;
+}
+
+.delete-btn img {
+  width: 50rpx;
+  height: 10rpx;
+  vertical-align: top;
 }
 </style>
 

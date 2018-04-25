@@ -41,10 +41,15 @@ export default {
 .tabs {
   width: 100%;
   height: 88rpx;
-  background: #ffe955;
 }
 .tabs > ul {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
   display:flex;
+  background: #ffe955;
+  z-index: 10;
 }
 .tabItem {
   line-height: 88rpx;

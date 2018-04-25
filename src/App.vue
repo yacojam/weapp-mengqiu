@@ -2,39 +2,37 @@
   import fly from '../utils/mqIO'
   export default {
     created () {
-      // 调用API从本地缓存中获取数据
-      const logs = wx.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      wx.setStorageSync('logs', logs)
-
-      console.log('app created and cache logs by setStorageSync')
-
       // 获取用户登录信息
       wx.login({
         success: function (res) {
           if (res.code) {
-            // 发起网络请求
-            var userInfo, nickName, avatarUrl, gender, province, city, country
             let Code = res.code
-            wx.getUserInfo({
-              success: function (res) {
-                userInfo = res.userInfo
-                nickName = userInfo.nickName
-                avatarUrl = userInfo.avatarUrl
-                gender = userInfo.gender // 性别 0：未知、1：男、2：女
-                province = userInfo.province
-                city = userInfo.city
-                country = userInfo.country
-                fly.post('user/mq/loginByOpenAuthCode', {
-                  nickName, avatarUrl, gender, province, city, country, code: Code
-                }).then((res) => {
-                  console.log(res)
-                  fly.config.headers['x-cert-uid'] = res.data.uid
-                  fly.config.headers['x-cert-token'] = res.data.token
-                  wx.setStorageSync('uid', res.data.uid)
-                  // wx.setStorageSync('token', res.data.token)
-                })
-              }
+            // 根据code获取用户的open_id
+            fly.post('/wx/open/mq/jscode2session', {
+              code: Code
+            }).then((res) => {
+              let openid = res.data.openid
+              // 获取用户信息
+              wx.getUserInfo({
+                success: function (res) {
+                  let userInfo, nickName, avatarUrl, gender, province, city, country
+                  userInfo = res.userInfo
+                  nickName = userInfo.nickName
+                  avatarUrl = userInfo.avatarUrl
+                  gender = userInfo.gender // 性别 0：未知、1：男、2：女
+                  province = userInfo.province
+                  city = userInfo.city
+                  country = userInfo.country
+                  // 调用登录接口
+                  fly.post('user/mq/loginByOpenAuthCode', {
+                    nickName, avatarUrl, gender, province, city, country, open_id: openid, code: Code
+                  }).then((res) => {
+                    fly.config.headers['x-cert-uid'] = res.data.uid
+                    fly.config.headers['x-cert-token'] = res.data.token
+                    wx.setStorageSync('uid', res.data.uid)
+                  })
+                }
+              })
             })
           } else {
             console.log('登录失败！' + res.errMsg)
@@ -46,13 +44,14 @@
 </script>
 
 <style>
-  .container {
+  page {
     height: 100%;
+    background-color: #f1f1fa;
+  }
+  .container {
     justify-content: space-between;
     box-sizing: border-box;
-    position: fixed;
     width: 100%;
-    top: 0;
     background-color: #f1f1fa;
   }
   /* this rule will be remove */

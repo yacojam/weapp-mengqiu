@@ -8,6 +8,7 @@
 <script>
 import lists from '@/components/lists'
 import emptyTemplate from '@/components/emptyTemplate'
+import fly from '@/../utils/mqIO'
 
 export default {
   components: {
@@ -37,8 +38,23 @@ export default {
       ]
     }
   },
-  methods: {},
-  created () {}
+  methods: {
+    getFansList () {
+      let id = wx.getStorageSync('uid')
+      fly.post('information/listByFans', {
+        look_user_id: id
+      }).then(res => {
+        console.log(res)
+      }).catch(res => {
+        console.log(res)
+      })
+    }
+  },
+  created () {},
+  onShow () {
+    // this.fansData = this.getFansList()
+    this.getFansList()
+  }
 }
 </script>
 

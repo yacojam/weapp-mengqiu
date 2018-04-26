@@ -112,22 +112,34 @@ export default {
 .recommend {
   width: 100%;
   background-color: #fff;
+  margin-top: 88rpx;
+  z-index: 10;
 }
 .header-bar {
   width: 100%;
   background-color: #ffe955;
+  position: fixed;
+  top: 0;
+  z-index: 11;
 }
-.active {
-  border-bottom: 8rpx solid #000;
+.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 6rpx;
+  background: #000000;
 }
-
 .for-recommend,
 .for-attention {
   display: inline-block;
-  padding: 25rpx 2rpx;
+  line-height: 88rpx;
   font-size: 30rpx;
   color: #000;
-  margin-left: 50rpx;
+  margin-left: 52rpx;
+  font-weight: bold;
+  position: relative;
 }
 .write {
   position: fixed;

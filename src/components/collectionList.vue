@@ -1,26 +1,34 @@
 <template>
   <div class="bottom">
     <div class="title">
-      最新发布
-      <span>{{ photos.length }}</span>
+      我的收藏
+      <span>{{ lists.length }}</span>
     </div>
-    <div class="photos">
-      <img v-for="(item, index) in photos" :key="index" :src="item" alt="" @click="jump()">
+    <div class="photos" v-for="(item, index) in lists" :key="index">
+      <img :src="item.imgList[0]" alt="" @click="jump(item.id, item.status, item.type_id)">
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['photos'],
+  props: ['dataList'],
   data () {
     return {}
   },
+  computed: {
+    lists () {
+      return this.dataList[0]
+    }
+  },
   methods: {
-    jump (type = 'details') {
+    jump (id, status, typeId) {
       wx.navigateTo({
-        url: `/pages/${type}/main`
+        url: `/pages/details/main`
       })
     }
+  },
+  created () {
+    console.log(this.dataList)
   }
 }
 </script>

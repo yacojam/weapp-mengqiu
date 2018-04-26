@@ -1,39 +1,42 @@
 <template>
   <div class="container">
-     <latest-release-list :photos="photos"></latest-release-list>
+     <collection-list :dataList="dataList"></collection-list>
   </div>
 </template>
 
 <script>
-import latestReleaseList from '@/components/latestReleaseList'
+import collectionList from '@/components/collectionList'
+import fly from '@/../utils/mqIO'
+
 export default {
   data () {
     return {
-      photos: [
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg'
-      ]
+      dataList: []
     }
   },
   components: {
-    latestReleaseList
+    collectionList
+  },
+  computed: {
   },
   methods: {
+    getCollectionList () {
+      fly.post('/information/listByFavorite', {
+        type_id: 7
+      }).then(res => {
+        if (res.code === 1) {
+          console.log(res)
+          this.$set(this.dataList, 0, res.data.list)
+        }
+      }).catch(res => {
+        console.log(res)
+      })
+    }
   },
   created () {
+  },
+  onShow () {
+    this.getCollectionList()
   }
 }
 </script>

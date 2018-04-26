@@ -20,7 +20,6 @@
 
 <script>
 import fly from '@/../utils/mqIO'
-import latestReleaseList from '@/components/latestReleaseList'
 import PublishList from '@/components/PublishList/PublishList'
 export default {
   data () {
@@ -75,7 +74,7 @@ export default {
     }
   },
   components: {
-    latestReleaseList, PublishList
+    PublishList
   },
   onLoad (options) {
     this.lookUserId = options.lookUserId

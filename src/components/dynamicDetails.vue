@@ -1,45 +1,45 @@
 <template>
-    <div class="user-shows-content" >
-      <div v-for="(item, index) in listData" :key="index" class="items">
-        <div class="head-portrait left-correction">
-            <img :src="item.headLogo" alt="用户头像">
-        </div>
-        <div class="info">
-            <p class="name">{{ item.name }}</p>
-            <p class="time">
-              <span class="subtime">{{ item.subtime }}</span>{{ item.time }}
-            </p>
-        </div>
-        <div class="delete-btn" @click="showDelete">
-          <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
-        </div>
-
-        <p class="title left-correction">{{ item.title }}</p>
-
-        <div class="big-show">
-            <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="scaleToFill">
-        </div>
-<!-- :class="['more',item.imgSrc.length > 1 && item.imgSrc.length < 5 ? 'normal': 'less']" -->
-        <div class="operate left-correction">
-            <span class="like" @click="toggleLove">
-                <img :src="lovedImgUrl" alt="like">
-            </span>
-            <span class="likes-counts">{{ loveNum }}</span>
-            <span class="comments">
-                <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
-            </span>
-            <span class="comments-counts">{{ commentNum }}</span>
-            <span class="forward">
-                <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
-            </span>
-            <span v-if="showStar" class="star">
-                <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
-            </span>
-        </div>
-
-        <div class="bottom-line"></div>
+  <div class="user-shows-content">
+    <div v-for="(item, index) in listData" :key="index" class="items">
+      <div class="head-portrait left-correction">
+        <img :src="item.headLogo" alt="用户头像">
       </div>
+      <div class="info">
+        <p class="name">{{ item.name }}</p>
+        <p class="time">
+          <span class="subtime">{{ item.subtime }}</span>{{ item.time }}
+        </p>
+      </div>
+      <div class="delete-btn" @click="showDelete">
+        <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
+      </div>
+
+      <p class="title left-correction">{{ item.title }}</p>
+
+      <div class="big-show">
+        <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="scaleToFill">
+      </div>
+      <!-- :class="['more',item.imgSrc.length > 1 && item.imgSrc.length < 5 ? 'normal': 'less']" -->
+      <div class="operate left-correction">
+        <span class="like" @click="toggleLove">
+          <img :src="lovedImgUrl" alt="like">
+        </span>
+        <span class="likes-counts">{{ loveNum }}</span>
+        <span class="comments">
+          <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
+        </span>
+        <span class="comments-counts">{{ commentNum }}</span>
+        <span class="forward">
+          <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
+        </span>
+        <span v-if="showStar" class="star">
+          <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
+        </span>
+      </div>
+
+      <div class="bottom-line"></div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -91,6 +91,23 @@ export default {
                 id: that.refId
               }).then(res => {
                 console.log(res)
+                if (res.code === 1) {
+                  wx.showToast({
+                    title: '删除成功',
+                    icon: 'success'
+                  })
+                  setTimeout(() => {
+                    wx.switchTab({
+                      url: '/pages/petNest/main'
+                    })
+                  }, 1000)
+                } else {
+                  console.log(res)
+                  wx.showToast({
+                    title: '删除失败，请重试！',
+                    icon: 'none'
+                  })
+                }
               }).catch(res => {
                 console.log(res)
               })
@@ -109,19 +126,19 @@ export default {
         type_id: 7,
         ref_id: that.refId
       })
-      .then((res) => {
-        if (res.code === 1) {
-          if (that.loved) {
-            that.loveNum -= 1
-          } else {
-            that.loveNum += 1
+        .then((res) => {
+          if (res.code === 1) {
+            if (that.loved) {
+              that.loveNum -= 1
+            } else {
+              that.loveNum += 1
+            }
+            that.loved = !that.loved
           }
-          that.loved = !that.loved
-        }
-      })
+        })
     }
   },
-  created () {},
+  created () { },
   computed: {
     listData () {
       let _data = this.lifeStatusData
@@ -162,7 +179,7 @@ export default {
 }
 
 .user-shows-content {
-  padding:0 0;
+  padding: 0 0;
   background-color: #fff;
 }
 .info,

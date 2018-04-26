@@ -8,6 +8,7 @@
 <script>
 import lists from '@/components/lists'
 import emptyTemplate from '@/components/emptyTemplate'
+import fly from '@/../utils/mqIO'
 
 export default {
   components: {
@@ -37,8 +38,23 @@ export default {
       ]
     }
   },
-  methods: {},
-  created () {}
+  methods: {
+    getConcernList () {
+      let id = wx.getStorageSync('uid')
+      fly.post('information/listByFavorite', {
+        look_user_id: id,
+        type_id: 8
+      }).then(res => {
+        console.log(res)
+      }).catch(res => {
+        console.log(res)
+      })
+    }
+  },
+  created () {},
+  onShow () {
+    this.getConcernList()
+  }
 }
 </script>
 

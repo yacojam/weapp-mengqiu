@@ -15,14 +15,14 @@ export default {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#FFE955',
-      navigationBarTitleText: '萌球社区',
+      navigationBarTitleText: '萌球MQ',
       navigationBarTextStyle: 'black',
       backgroundColor: '#f1f1fa'
     },
     tabBar: {
       list: [{
         pagePath: 'pages/index/main',
-        text: '萌球社区',
+        text: '社区',
         iconPath: './static/imgs/index/icon_home_nor@3x.png',
         selectedIconPath: './static/imgs/index/icon_home_sel@3x.png'
       }, {

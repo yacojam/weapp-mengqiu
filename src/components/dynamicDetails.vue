@@ -17,7 +17,7 @@
       <p class="title left-correction">{{ item.title }}</p>
 
       <div class="big-show">
-        <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="scaleToFill">
+        <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill">
       </div>
       <!-- :class="['more',item.imgSrc.length > 1 && item.imgSrc.length < 5 ? 'normal': 'less']" -->
       <div class="operate left-correction">

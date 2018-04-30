@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="center">
-      <ul>
+      <ul> 
         <li @click="jump('consumer',{
           lookUserId: userid
         })"><p>{{user.publish}}</p><p>发布</p></li>

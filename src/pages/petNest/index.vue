@@ -1,13 +1,11 @@
 <template>
   <div>
     <NavbarTabs @tabChanged="navTabChanged" :tabs="['时光','收藏']"></NavbarTabs>
-    <publish-list v-if="publishList.length > 0" :publishList="publishList"></publish-list>
-    <empty-template :type="emptyType" v-if="publishList.length <= 0"></empty-template>
+    <publish-list :publishList="publishList"></publish-list>
   </div>
 </template>
 
 <script>
-import emptyTemplate from '../../components/emptyTemplate'
 import PublishList from '../../components/PublishList/PublishList'
 import NavbarTabs from '../../components/NavbarTabs/NavbarTabs'
 import fly from '../../../utils/mqIO'
@@ -15,7 +13,6 @@ export default {
   name: 'pet-nest',
   data () {
     return {
-      emptyType: 'petNest',
       lookUserId: 0,
       page: 1,
       size: 10,
@@ -25,7 +22,7 @@ export default {
     }
   },
   components: {
-    PublishList, NavbarTabs, emptyTemplate
+    PublishList, NavbarTabs
   },
   methods: {
     getUserRelease () {

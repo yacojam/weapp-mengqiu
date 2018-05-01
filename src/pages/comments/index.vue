@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import emptyTemplate from '@/components/emptyTemplate'
+import emptyTemplate from '@/components/empty-template'
 
 export default {
   components: {

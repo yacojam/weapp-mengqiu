@@ -20,7 +20,7 @@
         </li>
       </ul>
     </div>
-    <empty-template :type="petNest" v-if="sortList.length <= 0"></empty-template>
+    <empty-template v-if="sortList.length <= 0" emptyImageUrl="/static/imgs/empty/empty-petNest@2x.png"></empty-template>
     <div @click="jump('release')" class="btn-publish">
       <img src="/static/imgs/index/feed_btn_write_nor@3x.png" alt="">
     </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import emptyTemplate from '../../components/emptyTemplate'
+import emptyTemplate from './empty-template'
 
 export default {
   components: {
@@ -71,7 +71,7 @@ export default {
   props: {
     publishList: {
       type: Array,
-      'default': []
+      default: []
     }
   },
   computed: {
@@ -110,7 +110,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../common/sass/variable';
+  @import '../common/sass/variable';
   .publishList {
 
   }

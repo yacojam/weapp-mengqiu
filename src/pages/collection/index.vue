@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import collectionList from '@/components/collectionList'
+import collectionList from '@/components/collection-list'
 import fly from '@/../utils/mqIO'
 
 export default {

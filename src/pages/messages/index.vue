@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import MessageList from '@/components/MessageList/MessageList'
-import tabs from '@/components/NavbarTabs/NavbarTabs'
+import MessageList from '@/components/message/message-list'
+import tabs from '@/components/tab-page'
 export default {
   name: 'index',
   data () {

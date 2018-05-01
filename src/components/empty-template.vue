@@ -1,20 +1,15 @@
 <template>
     <div class="empty">
-        <img :src="emptyTypeUrl" alt="空值图" model="scaleToFill">
+        <img :src="emptyImageUrl" alt="空值图" model="scaleToFill">
     </div>
 </template>
 
 <script>
 export default {
-  name: ' emptyTemplate',
-  props: ['type'],
+  name: ' empty-template',
+  props: ['emptyImageUrl'],
   data () {
     return {}
-  },
-  computed: {
-    emptyTypeUrl: function () {
-      return `/static/imgs/empty/empty-${this.type}@2x.png`
-    }
   },
   methods: {},
   watch: {},

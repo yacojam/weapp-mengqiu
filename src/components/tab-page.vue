@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'tabs',
+  name: 'tab-page',
   props: [
     'tabs'
   ],

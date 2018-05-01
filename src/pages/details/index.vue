@@ -1,6 +1,6 @@
 <template>
   <scroll-view scroll-with-animation scroll-y class="container">
-    <dynamicDetails :="true" :lifeStatusData="lifeStatusData" :loveNum="loveNum" :commentNum="commentNum" :refId="momentid"></dynamicDetails>
+    <moment-list :="true" :lifeStatusData="lifeStatusData" :loveNum="loveNum" :commentNum="commentNum" :refId="momentid"></moment-list>
     <div class="likePeople">
       <div v-for="(item, index) in loveUserList" :key="index" v-if="index < 3">
         <img :src="item.img" alt="">
@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import dynamicDetails from '@/components/dynamicDetails'
-import emptyTemplate from '@/components/emptyTemplate'
+import momentList from '@/components/moment-list'
+import emptyTemplate from '@/components/empty-template'
 import fly from '@/../utils/mqIO'
 
 export default {
   components: {
-    dynamicDetails, emptyTemplate
+    momentList, emptyTemplate
   },
   data () {
     return {

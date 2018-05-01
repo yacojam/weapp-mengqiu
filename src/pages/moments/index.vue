@@ -2,12 +2,15 @@
   <div class="container">
       <div class="">
         <div class="header-bar">
-          <div class="for-recommend" :class="{ active: showRecommend}" @click="changeContent('recommend')">推荐</div>
-          <div class="for-attention" :class="{ active: !showRecommend}" @click="changeContent('attention')">关注</div>
+          <div class="for-recommend" :class="{ active: type === 'recommend'}" @click="changeTab('recommend')">推荐</div>
+          <div class="for-attention" :class="{ active: type === 'attention'}" @click="changeTab('attention')">关注</div>
         </div>
 
-        <div class="recommend">
-          <dynamic-details :lifeStatusData="lifeStatusData"></dynamic-details>
+        <div class="recommend" :class="{ active: type === 'recommend'}" >
+          <moment-list :lifeStatusData="lifeStatusData"></moment-list>
+        </div>
+        <div class="recommend" :class="{ active: type === 'attention'}" >
+          <moment-list></moment-list>
         </div>
 
         <div class="attention"></div>
@@ -16,27 +19,27 @@
 </template>
 
 <script>
-import dynamicDetails from '@/components/dynamicDetails'
+import momentList from '@/components/moment-list'
 
 import lifeStatusData from '@/api-mock/recommendmomentlist'
 
 export default {
   data () {
     return {
-      showRecommend: true,
+      type: 'recommend',
       lifeStatusData
     }
   },
   components: {
-    dynamicDetails
+    momentList
   },
 
   computed: {
   },
 
   methods: {
-    changeContent (type) {
-      (type === 'recommend') ? this.showRecommend = true : this.showRecommend = false
+    changeTab (type) {
+      this.type === type
     },
     jump (type) {
       wx.navigateTo({

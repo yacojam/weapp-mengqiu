@@ -1,16 +1,16 @@
 <template>
   <div>
-    <NavbarTabs @tabChanged="navTabChanged" :tabs="['时光','收藏']"></NavbarTabs>
+    <tab-page @tabChanged="navTabChanged" :tabs="['时光','收藏']"></tab-page>
     <publish-list :publishList="publishList"></publish-list>
   </div>
 </template>
 
 <script>
-import PublishList from '../../components/PublishList/PublishList'
-import NavbarTabs from '../../components/NavbarTabs/NavbarTabs'
+import publishList from '../../components/publish-list'
+import tabPage from '../../components/tab-page'
 import fly from '../../../utils/mqIO'
 export default {
-  name: 'pet-nest',
+  name: 'nest',
   data () {
     return {
       lookUserId: 0,
@@ -22,7 +22,7 @@ export default {
     }
   },
   components: {
-    PublishList, NavbarTabs
+    publishList, tabPage
   },
   methods: {
     getUserRelease () {

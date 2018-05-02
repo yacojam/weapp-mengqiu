@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import momentList from '@/components/moment-list'
+import momentList from '@/components/moment/moment-list'
 import emptyTemplate from '@/components/empty-template'
 import fly from '@/../utils/mqIO'
 

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <tab-page @tabChanged="navTabChanged" :tabs="['时光','收藏']"></tab-page>
+    <tabs @tabChanged="navTabChanged" :tabs="['时光','收藏']"></tabs>
     <publish-list :publishList="publishList"></publish-list>
   </div>
 </template>
 
 <script>
 import publishList from '../../components/publish-list'
-import tabPage from '../../components/tab-page'
+import tabs from '../../components/tabs/tabs'
 import fly from '../../../utils/mqIO'
 export default {
   name: 'nest',
@@ -22,7 +22,7 @@ export default {
     }
   },
   components: {
-    publishList, tabPage
+    publishList, tabs
   },
   methods: {
     getUserRelease () {

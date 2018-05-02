@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import momentList from '@/components/moment-list'
+import momentList from '@/components/moment/moment-list'
 
 import lifeStatusData from '@/api-mock/recommendmomentlist'
 

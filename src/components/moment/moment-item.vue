@@ -1,49 +1,48 @@
 <template>
-  <div class="user-shows-content">
-    <div v-for="(item, index) in listData" :key="index" class="items">
-      <div class="head-portrait left-correction">
-        <img :src="item.headLogo" alt="用户头像">
-      </div>
-      <div class="info">
-        <p class="name">{{ item.name }}</p>
+    <div :data="data" :key="index" class="items">
+        <div class="head-portrait left-correction">
+        <img :src="moment.headLogo" alt="用户头像">
+        </div>
+        <div class="info">
+        <p class="name">{{ moment.name }}</p>
         <p class="time">
-          <span class="subtime">{{ item.subtime }}</span>{{ item.time }}
+            <span class="subtime">{{ moment.subtime }}</span>{{ moment.time }}
         </p>
-      </div>
-      <div class="delete-btn" @click="showDelete">
+        </div>
+        <div class="delete-btn" @click="showDelete">
         <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
-      </div>
+        </div>
 
-      <p class="title left-correction">{{ item.title }}</p>
+        <p class="title left-correction">{{ moment.title }}</p>
 
-      <div class="big-show">
-        <img v-for="(citem, cindex) in item.imgSrc" :class="item.className" :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill">
-      </div>
-      <!-- :class="['more',item.imgSrc.length > 1 && item.imgSrc.length < 5 ? 'normal': 'less']" -->
-      <div class="operate left-correction">
+        <div class="big-show">
+        <img v-for="(citem, cindex) in moment.imgSrc" :class="moment.className" 
+            :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click="onPictureClick(citem, moment.imgSrc)">
+        </div>
+        <!-- :class="['more',moment.imgSrc.length > 1 && moment.imgSrc.length < 5 ? 'normal': 'less']" -->
+        <div class="operate left-correction">
         <span class="like" @click="toggleLove">
-          <img :src="lovedImgUrl" alt="like">
+            <img :src="lovedImgUrl" alt="like">
         </span>
-        <span class="likes-counts">{{ loveNum }}</span>
+        <span class="likes-counts">{{ moment.loveNum }}</span>
         <span class="comments">
-          <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
+            <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
         </span>
-        <span class="comments-counts">{{ commentNum }}</span>
+        <span class="comments-counts">{{ moment.commentNum }}</span>
         <span class="forward">
-          <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
+            <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
         </span>
-        <span v-if="showStar" class="star">
-          <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
+        <span v-if="moment.showStar" class="star">
+            <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
         </span>
-      </div>
+        </div>
 
-      <div class="bottom-line"></div>
+        <div class="bottom-line"></div>
     </div>
-  </div>
 </template>
 
 <script>
-import fly from '../../utils/mqIO'
+import fly from '../../../utils/mqIO'
 
 export default {
   data () {
@@ -55,27 +54,18 @@ export default {
     }
   },
   props: {
-    showStar: {
-      type: Boolean,
-      'default': false
-    },
-    lifeStatusData: {
-      type: Array
-    },
-    loveNum: {
-      type: Number,
-      default: 0
-    },
-    commentNum: {
-      type: Number,
-      default: 0
-    },
-    refId: {
-      type: Number,
-      default: 0
+    moment: {
+      type: Object,
+      default: null
     }
   },
   methods: {
+    onPictureClick (src, imageUrls) {
+      wx.previewImage({
+        current: src,
+        urls: imageUrls
+      })
+    },
     showDelete () {
       let that = this
       wx.showActionSheet({
@@ -140,22 +130,6 @@ export default {
   },
   created () { },
   computed: {
-    listData () {
-      let _data = this.lifeStatusData
-      let className = 'less'
-      for (let i in _data) {
-        if (_data[i].imgSrc.length > 4) {
-          className = 'more'
-        }
-        if (_data[i].imgSrc.length >= 2 && _data[i].imgSrc.length <= 4) {
-          className = 'normal'
-        }
-        _data[i] = Object.assign(_data[i], { className })
-
-        className = 'less'
-      }
-      return _data
-    },
     lovedImgUrl () {
       return this.loved ? '/static/imgs/index/feed_icon_like_sel@2x.png' : '/static/imgs/index/feed_icon_like_nor@2x.png'
     }
@@ -176,11 +150,6 @@ export default {
   width: 60rpx;
   height: 60rpx;
   border-radius: 50%;
-}
-
-.user-shows-content {
-  padding: 0 0;
-  background-color: #fff;
 }
 .info,
 .head-portrait {

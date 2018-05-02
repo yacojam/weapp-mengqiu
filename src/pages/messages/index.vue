@@ -7,7 +7,7 @@
 
 <script>
 import MessageList from '@/components/message/message-list'
-import tabs from '@/components/tab-page'
+import tabs from '@/components/tabs/tabs'
 export default {
   name: 'index',
   data () {

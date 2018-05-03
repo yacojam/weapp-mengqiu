@@ -1,13 +1,13 @@
 <template>
   <div>
-    <tab-list @tabChanged="navTabChanged" :list="tabs"></tab-list>
-    <publish-list :publishList="publishList"></publish-list>
+    <TabList @tabChanged="navTabChanged" :list="tabs"></TabList>
+    <PublishList :publishList="publishList"></PublishList>
   </div>
 </template>
 
 <script>
-import publishList from '../../components/publish-list'
-import tabList from '../../components/tab/tab-list'
+import PublishList from '../../components/publish-list'
+import TabList from '../../components/tab/tab-list'
 import fly from '../../../utils/mqIO'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     }
   },
   components: {
-    publishList, tabList
+    PublishList, TabList
   },
   methods: {
     getUserRelease () {

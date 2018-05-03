@@ -2,14 +2,14 @@
   <div class="tabs">
     <ul>
       <li @click.stop="handleClick(index, tab)" :class="{'active':currentIndex === index }" 
-        class="tabItem" v-for="(tab, index) in list" :key="tab.id">{{tab.title}}</li>
+        class="tab-item" v-for="(tab, index) in list" :key="tab.id">{{tab.title}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'tab-list',
+  name: 'TabList',
   props: [
     'defaultTab',
     'list'
@@ -53,7 +53,7 @@ export default {
   background: #ffe955;
   z-index: 10;
 }
-.tabItem {
+.tab-item {
   line-height: 88rpx;
   margin-left:52rpx;
   font-size: 30rpx;
@@ -62,7 +62,7 @@ export default {
   font-family: 'PingFang';
   position: relative;
 }
-.tabItem.active::after {
+.tab-item.active::after {
   content: "";
   position: absolute;
   bottom: 0px;

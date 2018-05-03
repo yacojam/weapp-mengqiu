@@ -1,21 +1,22 @@
 <template>
   <div class="container">
       <div class="">
-        <tab-list :list="tabs" @tabChanged="changeTab" />
+        <TabList :list="tabs" @tabChanged="changeTab" />
 
         <div class="tab-panel" :class="{ active: currentTab === 'recommend'}">
-          <moment-list :lifeStatusData="lifeStatusData"></moment-list>
+          <MomentList :lifeStatusData="lifeStatusData"></MomentList>
         </div>
         <div class="tab-panel" :class="{ active: currentTab === 'following'}">
-          <moment-list :lifeStatusData="[lifeStatusData[1]]"></moment-list>
+          <MomentList :lifeStatusData="[lifeStatusData[1]]"></MomentList>
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import momentList from '@/components/moment/moment-list'
-import tabList from '@/components/tab/tab-list'
+import MomentList from '@/components/moment/moment-list'
+import TabList from '@/components/tab/tab-list'
+import TabContent from '@/components/tab/tab-content'
 
 import lifeStatusData from '@/api-mock/recommendmomentlist'
 
@@ -36,8 +37,9 @@ export default {
     }
   },
   components: {
-    tabList,
-    momentList
+    TabList,
+    TabContent,
+    MomentList
   },
 
   computed: {

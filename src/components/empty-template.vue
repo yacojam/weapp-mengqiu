@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: ' empty-template',
+  name: ' EmptyTemplate',
   props: ['emptyImageUrl'],
   data () {
     return {}

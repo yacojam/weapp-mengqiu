@@ -13,7 +13,7 @@
           </div>
       </div>
 
-      <empty-template :type="type" v-if="empty"></empty-template>
+      <EmptyTemplate :type="type" v-if="empty"></EmptyTemplate>
 
       <div class="add-comment">
           <input type="text" placeholder="发表评论..." class="inputs">
@@ -23,11 +23,11 @@
 </template>
 
 <script>
-import emptyTemplate from '@/components/empty-template'
+import EmptyTemplate from '@/components/empty-template'
 
 export default {
   components: {
-    emptyTemplate
+    EmptyTemplate
   },
   data () {
     return {

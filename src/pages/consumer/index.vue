@@ -13,14 +13,14 @@
     </div>
 
     <!--<latest-release-list :photos="photos"></latest-release-list>-->
-    <publish-list :publishList="publishList"></publish-list>
+    <PublishList :publishList="publishList"></PublishList>
 
   </div>
 </template>
 
 <script>
 import fly from '@/../utils/mqIO'
-import publishList from '@/components/publish-list'
+import PublishList from '@/components/publish-list'
 export default {
   data () {
     return {
@@ -74,7 +74,7 @@ export default {
     }
   },
   components: {
-    publishList
+    PublishList
   },
   onLoad (options) {
     this.lookUserId = options.lookUserId

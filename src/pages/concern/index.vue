@@ -1,19 +1,19 @@
 <template>
     <div class="container">
         <lists :from="type" v-if="!empty" :listData="concernData"></lists>
-        <empty-template :type="type" v-if="empty"></empty-template>
+        <EmptyTemplate :type="type" v-if="empty"></EmptyTemplate>
     </div>
 </template>
 
 <script>
 import lists from '@/components/lists'
-import emptyTemplate from '@/components/empty-template'
+import EmptyTemplate from '@/components/empty-template'
 import fly from '@/../utils/mqIO'
 
 export default {
   components: {
     lists,
-    emptyTemplate
+    EmptyTemplate
   },
   data () {
     return {

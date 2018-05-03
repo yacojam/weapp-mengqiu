@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'tab-content',
+  name: 'TabContent',
   props: [
     'selected'
   ],

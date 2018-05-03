@@ -20,7 +20,7 @@
         </li>
       </ul>
     </div>
-    <empty-template v-if="sortList.length <= 0" emptyImageUrl="/static/imgs/empty/empty-petNest@2x.png"></empty-template>
+    <EmptyTemplate v-if="sortList.length <= 0" emptyImageUrl="/static/imgs/empty/empty-petNest@2x.png"></EmptyTemplate>
     <div @click="jump('release')" class="btn-publish">
       <img src="/static/imgs/index/feed_btn_write_nor@3x.png" alt="">
     </div>
@@ -28,11 +28,12 @@
 </template>
 
 <script>
-import emptyTemplate from './empty-template'
+import EmptyTemplate from './empty-template'
 
 export default {
+  name: 'PublishList',
   components: {
-    emptyTemplate
+    EmptyTemplate
   },
   methods: {
     jump (type, query) {

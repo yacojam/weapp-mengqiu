@@ -1,38 +1,40 @@
 <template>
   <div class="tabs">
     <ul>
-      <li @click.stop="handleClick(index)" :class="{'active':selectedIndex === index }" class="tabItem" v-for="(item, index) in tabs" :key="index">{{item}}</li>
+      <li @click.stop="handleClick(index, tab)" :class="{'active':currentIndex === index }" 
+        class="tabItem" v-for="(tab, index) in list" :key="tab.id">{{tab.title}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'tab-panel',
+  name: 'tab-list',
   props: [
-    'tabs'
+    'defaultTab',
+    'list'
   ],
   data () {
     return {
-      selectedIndex: 0
+      currentIndex: 0
     }
   },
   methods: {
-    handleClick (index) {
-      this.selectedIndex = index
+    handleClick (index, tab) {
+      this.currentIndex = index
     }
   },
   watch: {
-    selectedIndex (nowIndex, oldIndex) {
+    currentIndex (nowIndex, oldIndex) {
       if (nowIndex === oldIndex) {
         return
       } else {
-        this.$emit('tabChanged', nowIndex)
+        this.$emit('tabChanged', this.list[nowIndex].id)
       }
     }
   },
   created () {
-    this.$emit('tabChanged', this.selectedIndex)
+    this.$emit('tabChanged', this.list[this.currentIndex].id)
   }
 }
 </script>

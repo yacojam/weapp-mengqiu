@@ -1,18 +1,29 @@
 <template>
   <div>
-    <tabs @tabChanged="navTabChanged" :tabs="['时光','收藏']"></tabs>
+    <tab-list @tabChanged="navTabChanged" :list="tabs"></tab-list>
     <publish-list :publishList="publishList"></publish-list>
   </div>
 </template>
 
 <script>
 import publishList from '../../components/publish-list'
-import tabs from '../../components/tabs/tabs'
+import tabList from '../../components/tab/tab-list'
 import fly from '../../../utils/mqIO'
+
 export default {
   name: 'nest',
   data () {
     return {
+      tabs: [
+        {
+          id: 'moments',
+          title: '时光'
+        }, {
+          id: 'collection',
+          title: '收藏'
+        }
+      ],
+      currentTab: 'moments',
       lookUserId: 0,
       page: 1,
       size: 10,
@@ -22,7 +33,7 @@ export default {
     }
   },
   components: {
-    publishList, tabs
+    publishList, tabList
   },
   methods: {
     getUserRelease () {
@@ -57,7 +68,9 @@ export default {
       })
     },
     navTabChanged (value) {
-      if (value === 0) {
+      this.currentTab = value
+
+      if (value === 'moments') {
         this.getUserRelease()
       } else {
         this.getlistByFavorite()

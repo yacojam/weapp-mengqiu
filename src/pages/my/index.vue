@@ -5,7 +5,6 @@
       <p>
         <span class="name">{{user.name}}</span><br>
         <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="/static/imgs/index/user_icon_sign@3x.png" alt=""></span>
-
       </p>
     </div>
     <div class="center">

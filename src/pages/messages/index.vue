@@ -1,17 +1,28 @@
 <template>
   <div>
-    <tabs @tabChanged="handleChange" :tabs="['评论','赞']"></tabs>
+    <tab-list @tabChanged="handleChange" :list="tabs"></tab-list>
     <MessageList :list="list"></MessageList>
   </div>
 </template>
 
 <script>
 import MessageList from '@/components/message/message-list'
-import tabs from '@/components/tabs/tabs'
+import tabList from '@/components/tab/tab-list'
+
 export default {
   name: 'index',
   data () {
     return {
+      tabs: [
+        {
+          id: 'comments',
+          title: '评论'
+        }, {
+          id: 'likes',
+          title: '赞'
+        }
+      ],
+      currentTab: 'comments',
       text: '',
       list: [
         {
@@ -46,8 +57,9 @@ export default {
     }
   },
   methods: {
-    handleChange (index) {
-      if (index === 0) {
+    handleChange (tab) {
+      this.currentTab = tab
+      if (tab === 'comments') {
         this.text = '评论页面'
       } else {
         this.text = '赞'
@@ -55,7 +67,7 @@ export default {
     }
   },
   components: {
-    tabs, MessageList
+    tabList, MessageList
   }
 }
 </script>

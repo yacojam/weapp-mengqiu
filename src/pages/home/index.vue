@@ -3,10 +3,10 @@
       <div class="">
         <tab-list :list="tabs" @tabChanged="changeTab" />
 
-        <div class="tab-content" :class="{ active: currentTab === 'recommend'}" >
+        <div class="tab-panel" :class="{ active: currentTab === 'recommend'}">
           <moment-list :lifeStatusData="lifeStatusData"></moment-list>
         </div>
-        <div class="tab-content" :class="{ active: currentTab === 'attention'}" >
+        <div class="tab-panel" :class="{ active: currentTab === 'following'}">
           <moment-list :lifeStatusData="[lifeStatusData[1]]"></moment-list>
         </div>
       </div>
@@ -73,18 +73,10 @@ export default {
   width: 100%;
   height: 100%;
 }
-.tab-content {
-  width: 100%;
-  background-color: #fff;
-  z-index: 10;
+.tab-panel {
+  display: none;
 }
-.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 6rpx; 
-  background: #000000;
+.tab-panel.active {
+  display: block;
 }
 </style>

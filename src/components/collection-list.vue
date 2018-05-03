@@ -33,7 +33,6 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-@import "../common/sass/variable";
 .bottom .title {
   @include font-32;
   line-height: 109rpx;

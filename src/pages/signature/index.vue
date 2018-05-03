@@ -13,7 +13,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../common/sass/variable.scss';
   textarea {
     @include font-32-median;
     width: 100%;

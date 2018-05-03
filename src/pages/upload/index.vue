@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import fly from '../../../utils/mqIO'
+import fly from '@/utils/mqIO'
 export default {
   name: 'index',
   data () {
@@ -86,7 +86,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/sass/variable.scss";
 textarea {
   width: 100%;
   height: 256rpx;

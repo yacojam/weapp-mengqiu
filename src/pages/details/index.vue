@@ -33,7 +33,7 @@
 <script>
 import MomentList from '@/components/moment/moment-list'
 import EmptyTemplate from '@/components/empty-template'
-import fly from '@/../utils/mqIO'
+import fly from '@/utils/mqIO'
 
 export default {
   components: {
@@ -129,7 +129,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../common/sass/variable";
 .likePeople {
   width: 100%;
   height: 60rpx;

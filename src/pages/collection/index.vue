@@ -6,7 +6,7 @@
 
 <script>
 import collectionList from '@/components/collection-list'
-import fly from '@/../utils/mqIO'
+import fly from '@/utils/mqIO'
 
 export default {
   data () {

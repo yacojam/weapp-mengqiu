@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import fly from '../../../utils/mqIO'
+import fly from '@/utils/mqIO'
 
 export default {
   data () {

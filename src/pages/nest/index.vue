@@ -8,7 +8,7 @@
 <script>
 import PublishList from '../../components/publish-list'
 import TabList from '../../components/tab/tab-list'
-import fly from '../../../utils/mqIO'
+import fly from '@/utils/mqIO'
 
 export default {
   name: 'nest',

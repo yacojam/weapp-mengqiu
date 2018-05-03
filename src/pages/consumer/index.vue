@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import fly from '@/../utils/mqIO'
+import fly from '@/utils/mqIO'
 import PublishList from '@/components/publish-list'
 export default {
   data () {
@@ -84,7 +84,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../common/sass/variable';
 .top {
   width: 100%;
   height: 526rpx;

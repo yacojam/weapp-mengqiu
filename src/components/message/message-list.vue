@@ -32,7 +32,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../common/sass/variable';
   .MessageList {
     display:flex;
     width: 100%;

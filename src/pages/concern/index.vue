@@ -8,7 +8,7 @@
 <script>
 import lists from '@/components/lists'
 import EmptyTemplate from '@/components/empty-template'
-import fly from '@/../utils/mqIO'
+import fly from '@/utils/mqIO'
 
 export default {
   components: {

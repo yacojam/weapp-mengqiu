@@ -28,7 +28,7 @@
 </template>
 
 <script>
-// import fly from '../../../utils/mqIO'
+// import fly from '@/utils/mqIO'
 export default {
   data () {
     return {
@@ -74,7 +74,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../common/sass/variable';
   .top {
     background: $color-normal;
     width: 100%;

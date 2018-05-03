@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import fly from '../../../utils/mqIO'
+  import fly from '@/utils/mqIO'
   export default {
     name: 'index',
     data () {
@@ -56,7 +56,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../../common/sass/variable.scss';
   .container {
     background: #ffffff;
   }

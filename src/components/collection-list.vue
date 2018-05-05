@@ -23,7 +23,7 @@ export default {
   methods: {
     jump (id, status, typeId) {
       wx.navigateTo({
-        url: `/pages/details/main`
+        url: `/pages/moment/main`
       })
     }
   },

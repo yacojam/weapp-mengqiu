@@ -1,5 +1,5 @@
 <script>
-  import fly from '@/utils/mqIO'
+  import fly from '@/utils/mq-fly'
   export default {
     created () {
       // 获取用户登录信息

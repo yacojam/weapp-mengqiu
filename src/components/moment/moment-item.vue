@@ -1,5 +1,5 @@
 <template>
-    <div :data="data" :key="index" class="items">
+    <div :data="data" :key="index" class="items" @click="onMomentClick">
         <div class="head-portrait left-correction">
         <img :src="moment.headLogo" alt="用户头像">
         </div>
@@ -9,7 +9,7 @@
             <span class="subtime">{{ moment.subtime }}</span>{{ moment.time }}
         </p>
         </div>
-        <div class="delete-btn" @click="showDelete">
+        <div class="delete-btn" @click.stop="showDelete">
         <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
         </div>
 
@@ -17,11 +17,11 @@
 
         <div class="big-show">
         <img v-for="(citem, cindex) in moment.imgSrc" :class="moment.className" 
-            :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click="onPictureClick(citem, moment.imgSrc)">
+            :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.imgSrc)">
         </div>
         <!-- :class="['more',moment.imgSrc.length > 1 && moment.imgSrc.length < 5 ? 'normal': 'less']" -->
         <div class="operate left-correction">
-        <span class="like" @click="toggleLove">
+        <span class="like" @click.stop="toggleLove">
             <img :src="lovedImgUrl" alt="like">
         </span>
         <span class="likes-counts">{{ moment.loveNum }}</span>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import fly from '@/utils/mqIO'
+import fly from '@/utils/mq-fly'
 
 export default {
   data () {
@@ -60,6 +60,16 @@ export default {
     }
   },
   methods: {
+    onAvatarClick () {
+      wx.navigateTo({
+        url: `/pages/profile/main`
+      })
+    },
+    onMomentClick (url) {
+      wx.navigateTo({
+        url: `/pages/moment/main`
+      })
+    },
     onPictureClick (src, imageUrls) {
       wx.previewImage({
         current: src,
@@ -126,6 +136,11 @@ export default {
             that.loved = !that.loved
           }
         })
+    },
+    shareMoment () {
+    },
+    onCommentClick () {
+
     }
   },
   created () { },

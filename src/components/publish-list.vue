@@ -7,7 +7,7 @@
             <p>{{item.month}}月{{item.day}}日</p>
             <p><span>周{{item.week}}</span><span>{{item.year}}</span></p>
           </div>
-          <div v-for="(key,inx) in item.list" class="publish" :key="inx"  @click="jump('details', {
+          <div v-for="(key,inx) in item.list" class="publish" :key="inx"  @click="jump('moment', {
           momentid: key.id
         })">
             <div>
@@ -21,7 +21,7 @@
       </ul>
     </div>
     <EmptyTemplate v-if="sortList.length <= 0" emptyImageUrl="/static/imgs/empty/empty-petNest@2x.png"></EmptyTemplate>
-    <div @click="jump('release')" class="btn-publish">
+    <div @click="jump('publish')" class="btn-publish">
       <img src="/static/imgs/index/feed_btn_write_nor@3x.png" alt="">
     </div>
   </div>

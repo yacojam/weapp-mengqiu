@@ -2,7 +2,7 @@
   <div class="container">
     <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div v-if="videoPath !== ''" class="uploadVideo">
-      <video controls id="myVideo" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="videoPath" alt=""></video>
+      <video id="myVideo" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="videoPath" alt=""></video>
     </div>
     <div @click="publish" class="send">
       <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import fly from '@/utils/mqIO'
+  import fly from '@/utils/mq-fly'
   export default {
     name: 'index',
     data () {

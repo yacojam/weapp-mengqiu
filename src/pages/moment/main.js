@@ -6,6 +6,7 @@ app.$mount()
 
 export default {
   config: {
+    pages: ['pages/moment/mian'],
     navigationBarTitleText: '动态详情'
   }
 }

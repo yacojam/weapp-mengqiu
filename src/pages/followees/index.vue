@@ -1,37 +1,37 @@
 <template>
     <div class="container">
-        <lists :form="type" v-if="!empty" :listData="fansData"></lists>
-        <empty-template :type="type" v-if="empty"></empty-template>
+        <lists :from="type" v-if="!empty" :listData="concernData"></lists>
+        <EmptyTemplate :type="type" v-if="empty"></EmptyTemplate>
     </div>
 </template>
 
 <script>
 import lists from '@/components/lists'
-import emptyTemplate from '@/components/empty-template'
-import fly from '@/utils/mqIO'
+import EmptyTemplate from '@/components/empty-template'
+import fly from '@/utils/mq-fly'
 
 export default {
   components: {
     lists,
-    emptyTemplate
+    EmptyTemplate
   },
   data () {
     return {
-      type: 'fans',
+      type: 'concern',
       empty: false,
-      fansData: [
+      concernData: [
         {
-          name: '可爱大小姐',
+          name: '我是第一名',
           headLogo: '/static/imgs/material/1.png',
           status: 'followed'
         },
         {
-          name: '养猫大王',
+          name: '我的第二名',
           headLogo: '/static/imgs/index/0.jpg',
           status: 'unfollowed'
         },
         {
-          name: '吸猫第一名',
+          name: '我的倒数第一名',
           headLogo: '/static/imgs/default.png',
           status: 'followed'
         }
@@ -39,10 +39,11 @@ export default {
     }
   },
   methods: {
-    getFansList () {
+    getConcernList () {
       let id = wx.getStorageSync('uid')
-      fly.post('information/listByFans', {
-        look_user_id: id
+      fly.post('information/listByFavorite', {
+        look_user_id: id,
+        type_id: 8
       }).then(res => {
         console.log(res)
       }).catch(res => {
@@ -52,8 +53,7 @@ export default {
   },
   created () {},
   onShow () {
-    // this.fansData = this.getFansList()
-    this.getFansList()
+    this.getConcernList()
   }
 }
 </script>

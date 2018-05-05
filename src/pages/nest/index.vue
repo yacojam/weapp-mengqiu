@@ -1,14 +1,19 @@
 <template>
   <div>
     <TabList @tabChanged="navTabChanged" :list="tabs"></TabList>
-    <PublishList :publishList="publishList"></PublishList>
+
+    <div class="tab-panel" :class="{active: currentTab === 'moments'}">
+      <PublishList :publishList="publishList"></PublishList>
+    </div>
+    <div class="tab-panel" :class="{active: currentTab === 'collection'}">
+    </div>
   </div>
 </template>
 
 <script>
 import PublishList from '../../components/publish-list'
 import TabList from '../../components/tab/tab-list'
-import fly from '@/utils/mqIO'
+import fly from '@/utils/mq-fly'
 
 export default {
   name: 'nest',

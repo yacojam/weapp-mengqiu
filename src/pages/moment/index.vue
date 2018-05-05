@@ -33,7 +33,7 @@
 <script>
 import MomentList from '@/components/moment/moment-list'
 import EmptyTemplate from '@/components/empty-template'
-import fly from '@/utils/mqIO'
+import fly from '@/utils/mq-fly'
 
 export default {
   components: {

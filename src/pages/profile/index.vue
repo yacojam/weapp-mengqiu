@@ -8,7 +8,7 @@
       <p class="des">{{des}}</p>
       <p class="fellow"><span>{{fellow}}</span>关注 <span>{{fans}}</span>粉丝</p>
       <div>
-        <img class="fansBtn" src="/static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
+        <img class="btn-fans" src="/static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
       </div>
     </div>
 
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import fly from '@/utils/mqIO'
+import fly from '@/utils/mq-fly'
 import PublishList from '@/components/publish-list'
 export default {
   data () {
@@ -49,7 +49,7 @@ export default {
     }
   },
   methods: {
-    jump (type = 'details') {
+    jump (type = 'moment') {
       wx.navigateTo({
         url: `/pages/${type}/main`
       })
@@ -118,7 +118,7 @@ export default {
       margin-left: 35rpx;
     }
   }
-  .top .fansBtn {
+  .top .btn-fans {
     width: 156rpx;
     height: 68rpx;
     margin-top: 25rpx;

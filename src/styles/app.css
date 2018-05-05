@@ -138,6 +138,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* 自定义通用样式 */
 .tab-panel {
   display: none;
 }

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-// import fly from '@/utils/mqIO'
+// import fly from '@/utils/mq-fly'
 export default {
   data () {
     return {

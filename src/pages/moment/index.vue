@@ -53,9 +53,9 @@ export default {
           name: 'Sabar',
           time: '09:32',
           subtime: '昨天',
-          headLogo: '/static/imgs/default.png',
+          headLogo: '/static/images/default.png',
           title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
-          imgSrc: ['/static/imgs/material/1.png'],
+          imgSrc: ['/static/images/material/1.png'],
           isLoved: false
         }
       ]

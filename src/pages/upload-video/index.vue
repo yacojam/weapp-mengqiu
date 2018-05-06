@@ -5,7 +5,7 @@
       <video id="myVideo" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="videoPath" alt=""></video>
     </div>
     <div @click="publish" class="send">
-      <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
+      <img src="/static/images/index/feed_btn_send_press@3x.png" alt="">
     </div>
   </div>
 

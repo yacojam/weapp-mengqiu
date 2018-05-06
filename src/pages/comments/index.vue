@@ -39,13 +39,13 @@ export default {
           comments: '猫咪这么可爱，和我家的好像啊！',
           time: '09:32',
           subtime: '昨天',
-          headLogo: '/static/imgs/index/0.jpg'
+          headLogo: '/static/images/index/0.jpg'
         },
         {
           name: '纸短情长',
           comments: '放弃了我的所有我的一切无所谓',
           time: '09:32',
-          headLogo: '/static/imgs/material/1.png'
+          headLogo: '/static/images/material/1.png'
         }
       ]
     }

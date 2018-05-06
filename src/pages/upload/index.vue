@@ -4,12 +4,12 @@
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
         <img :src="item" alt="">
-        <img class="delete" src="/static/imgs/index/feed_icon_del@3x.png" alt="">
+        <img class="delete" src="/static/images/index/feed_icon_del@3x.png" alt="">
       </div>
-      <img src="/static/imgs/index/feed_icon_add@3x.png" alt="">
+      <img src="/static/images/index/feed_icon_add@3x.png" alt="">
     </div>
     <div @click="publish" class="send">
-      <img src="/static/imgs/index/feed_btn_send_press@3x.png" alt="">
+      <img src="/static/images/index/feed_btn_send_press@3x.png" alt="">
     </div>
   </div>
 

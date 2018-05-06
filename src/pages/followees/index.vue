@@ -22,17 +22,17 @@ export default {
       concernData: [
         {
           name: '我是第一名',
-          headLogo: '/static/imgs/material/1.png',
+          headLogo: '/static/images/material/1.png',
           status: 'followed'
         },
         {
           name: '我的第二名',
-          headLogo: '/static/imgs/index/0.jpg',
+          headLogo: '/static/images/index/0.jpg',
           status: 'unfollowed'
         },
         {
           name: '我的倒数第一名',
-          headLogo: '/static/imgs/default.png',
+          headLogo: '/static/images/default.png',
           status: 'followed'
         }
       ]

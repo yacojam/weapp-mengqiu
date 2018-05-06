@@ -20,9 +20,9 @@
         </li>
       </ul>
     </div>
-    <EmptyTemplate v-if="sortList.length <= 0" emptyImageUrl="/static/imgs/empty/empty-petNest@2x.png"></EmptyTemplate>
+    <EmptyTemplate v-if="sortList.length <= 0" emptyImageUrl="/static/images/empty/empty-petNest@2x.png"></EmptyTemplate>
     <div @click="jump('publish')" class="btn-publish">
-      <img src="/static/imgs/index/feed_btn_write_nor@3x.png" alt="">
+      <img src="/static/images/index/feed_btn_write_nor@3x.png" alt="">
     </div>
   </div>
 </template>

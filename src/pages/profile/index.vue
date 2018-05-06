@@ -8,7 +8,7 @@
       <p class="des">{{des}}</p>
       <p class="fellow"><span>{{fellow}}</span>关注 <span>{{fans}}</span>粉丝</p>
       <div>
-        <img class="btn-fans" src="/static/imgs/index/userhome_btn_followed_pressed@3x.png" alt="">
+        <img class="btn-fans" src="/static/images/index/userhome_btn_followed_pressed@3x.png" alt="">
       </div>
     </div>
 
@@ -26,20 +26,20 @@ export default {
     return {
       name: 'Evelynn',
       des: '你们地球人就喜欢猜',
-      avatar: require('../../../static/imgs/index/0.jpg'),
+      avatar: require('../../../static/images/index/0.jpg'),
       fellow: 0,
       fans: 0,
       isFellowed: true,
       photos: [
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg',
-        '/static/imgs/index/0.jpg'
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg',
+        '/static/images/index/0.jpg'
       ],
       lookUserId: 0,
       page: 1,

@@ -10,7 +10,7 @@
         </p>
         </div>
         <div class="delete-btn" @click.stop="showDelete">
-        <img src="/static/imgs/feed_icon_del2@3x.png" alt="选择删除按钮">
+        <img src="/static/images/feed_icon_del2@3x.png" alt="选择删除按钮">
         </div>
 
         <p class="title left-correction">{{ moment.title }}</p>
@@ -26,14 +26,14 @@
         </span>
         <span class="likes-counts">{{ moment.loveNum }}</span>
         <span class="comments">
-            <img src="/static/imgs/index/feed_icon_comment@2x.png" alt="like">
+            <img src="/static/images/index/feed_icon_comment@2x.png" alt="like">
         </span>
         <span class="comments-counts">{{ moment.commentNum }}</span>
         <span class="forward">
-            <img src="/static/imgs/index/feed_icon_share@2x.png" alt="like">
+            <img src="/static/images/index/feed_icon_share@2x.png" alt="like">
         </span>
         <span v-if="moment.showStar" class="star">
-            <img src="/static/imgs/index/feed_icon_collect_nor@2x.png" alt="">
+            <img src="/static/images/index/feed_icon_collect_nor@2x.png" alt="">
         </span>
         </div>
 
@@ -48,7 +48,7 @@ export default {
   data () {
     return {
       imgList: [
-        '/static/imgs/index/feed_icon_like_nor@2x.png'
+        '/static/images/index/feed_icon_like_nor@2x.png'
       ],
       loved: false
     }
@@ -146,7 +146,7 @@ export default {
   created () { },
   computed: {
     lovedImgUrl () {
-      return this.loved ? '/static/imgs/index/feed_icon_like_sel@2x.png' : '/static/imgs/index/feed_icon_like_nor@2x.png'
+      return this.loved ? '/static/images/index/feed_icon_like_sel@2x.png' : '/static/images/index/feed_icon_like_nor@2x.png'
     }
   }
 }

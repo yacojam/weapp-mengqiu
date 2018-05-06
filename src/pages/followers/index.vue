@@ -22,17 +22,17 @@ export default {
       fansData: [
         {
           name: '可爱大小姐',
-          headLogo: '/static/imgs/material/1.png',
+          headLogo: '/static/images/material/1.png',
           status: 'followed'
         },
         {
           name: '养猫大王',
-          headLogo: '/static/imgs/index/0.jpg',
+          headLogo: '/static/images/index/0.jpg',
           status: 'unfollowed'
         },
         {
           name: '吸猫第一名',
-          headLogo: '/static/imgs/default.png',
+          headLogo: '/static/images/default.png',
           status: 'followed'
         }
       ]

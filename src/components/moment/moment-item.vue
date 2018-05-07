@@ -1,43 +1,44 @@
 <template>
-    <div :data="data" :key="index" class="items" @click="onMomentClick">
-        <div class="head-portrait left-correction">
-        <img :src="moment.headLogo" alt="用户头像">
+    <div :data="data" :key="index" class="moment-item" @click="onMomentClick">
+      <div class="user-info">
+        <div class="avatar-small">
+          <img class="avatar-small-image" :src="moment.headLogo" alt="用户头像">
         </div>
-        <div class="info">
-        <p class="name">{{ moment.name }}</p>
-        <p class="time">
-            <span class="subtime">{{ moment.subtime }}</span>{{ moment.time }}
-        </p>
+        <div class="name-time">
+          <p class="name">{{ moment.name }}</p>
+          <p class="time">
+            {{ moment.time }}
+              <span v-show="moment.location" class="location">{{ moment.location }}</span>
+          </p>
         </div>
-        <div class="delete-btn" @click.stop="showDelete">
-        <img src="/static/images/feed_icon_del2@3x.png" alt="选择删除按钮">
+        <div class="flex-wrp" v-if="isMyMoment" @click.stop="toggleFollow">
+          <img class="btn-follow" src="/static/images/moment/fans_btn_unfollowed@2x.png" alt="关注按钮" mode="widthFix">
         </div>
-
-        <p class="title left-correction">{{ moment.title }}</p>
-
+        <div class="flex-wrp" v-else @click.stop="onDeleteClick">
+          <img class="btn-delete" src="/static/images/moment/fans_btn_unfollowed2_pressed@2x.png" alt="删除按钮" mode="widthFix">
+        </div>
+      </div>
+      <div class="content">
+        <p class="title">{{ moment.title }}</p>
         <div class="big-show">
         <img v-for="(citem, cindex) in moment.imgSrc" :class="moment.className" 
             :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.imgSrc)">
         </div>
         <!-- :class="['more',moment.imgSrc.length > 1 && moment.imgSrc.length < 5 ? 'normal': 'less']" -->
-        <div class="operate left-correction">
-        <span class="like" @click.stop="toggleLove">
-            <img :src="lovedImgUrl" alt="like">
-        </span>
-        <span class="likes-counts">{{ moment.loveNum }}</span>
-        <span class="comments">
-            <img src="/static/images/index/feed_icon_comment@2x.png" alt="like">
-        </span>
-        <span class="comments-counts">{{ moment.commentNum }}</span>
-        <span class="forward">
-            <img src="/static/images/index/feed_icon_share@2x.png" alt="like">
-        </span>
-        <span v-if="moment.showStar" class="star">
-            <img src="/static/images/index/feed_icon_collect_nor@2x.png" alt="">
-        </span>
+      </div>
+      <div class="action-panel">
+        <div class="action-item">
+            <img :src="moment.showStar ? '/static/images/moment/feed_icon_collect_sel@2x.png' : '/static/images/moment/feed_icon_collect_nor@2x.png'" alt="like" mode="widthFix" @click.stop="toggleLove">
+            <span v-show="moment.loveNum" class="likes-counts">{{moment.loveNum }}</span>
         </div>
-
-        <div class="bottom-line"></div>
+        <div class="action-item" >
+            <img src="/static/images/moment/feed_icon_comment@2x.png" alt="comment" mode="widthFix" @click.stop="toggleLove">
+            <span v-show="moment.commentNum" class="comments-counts">{{moment.commentNum}}</span>
+        </div>
+        <div class="action-item">
+            <img src="/static/images/moment/feed_icon_share@2x.png" alt="share" mode="widthFix" @click.stop="toggleLove">
+        </div>
+      </div>
     </div>
 </template>
 
@@ -48,7 +49,7 @@ export default {
   data () {
     return {
       imgList: [
-        '/static/images/index/feed_icon_like_nor@2x.png'
+        '/static/images/moment/feed_icon_like_nor@2x.png'
       ],
       loved: false
     }
@@ -70,13 +71,16 @@ export default {
         url: `/pages/moment/main`
       })
     },
+    toggleFollow () {
+      this.loved = !this.loved
+    },
     onPictureClick (src, imageUrls) {
       wx.previewImage({
         current: src,
         urls: imageUrls
       })
     },
-    showDelete () {
+    onDeleteClick () {
       let that = this
       wx.showActionSheet({
         itemList: ['删除'],
@@ -146,126 +150,105 @@ export default {
   created () { },
   computed: {
     lovedImgUrl () {
-      return this.loved ? '/static/images/index/feed_icon_like_sel@2x.png' : '/static/images/index/feed_icon_like_nor@2x.png'
+      return this.loved ? '/static/images/moment/feed_icon_like_sel@2x.png' : '/static/images/moment/feed_icon_like_nor@2x.png'
     }
   }
 }
 </script>
 
 <style scoped>
-.items {
-  padding-top: 40rpx;
-  position: relative;
-}
-.left-correction {
-  padding-left: 40rpx;
+.moment-item {
+  border-bottom: 18rpx solid #f1f1fa;
 }
 
-.head-portrait img {
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 50%;
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 40rpx;
 }
-.info,
-.head-portrait {
-  display: inline-block;
-  height: 60rpx;
-  margin-bottom: 50rpx;
-}
-.info {
-  vertical-align: bottom;
+.user-info .name-time {
+  flex: 1;
   margin-left: 26rpx;
+  margin-right: 26rpx;
+  display: flex;
+  flex-direction: column;
 }
-.info .name {
+.name-time .name {
   font-family: "HelveticaNeueLTPro Md";
   font-size: 26rpx;
   color: #000;
-  margin-bottom: 14rpx;
 }
-.info .time {
+.name-time .time {
   font-family: "HelveticaNeueLTPro Lt";
+  margin-top: 12rpx;
   font-size: 22rpx;
   color: #000;
   opacity: 0.7;
 }
-.time .subtime {
-  margin-right: 12rpx;
+.name-time .location {
+  margin-left: 24rpx;
+  font-size: 22rpx;
+  color: #000;
+  opacity: 0.7;
 }
-.user-shows-content .title {
+.user-info .btn-follow {
+  width: 122rpx;
+}
+.user-info .btn-delete {
+  width: 122rpx;
+}
+
+.content .title {
   font-size: 32rpx;
-  font-family: "PingFang SC";
-  margin-bottom: 30rpx;
+  margin-bottom: 25rpx;
+  margin-left: 40rpx;
 }
 .big-show {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.user-shows-content .big-show img.less {
+.content .big-show img.less {
   width: 100%;
   height: 500rpx;
 }
-.user-shows-content .big-show img.normal {
+.content .big-show img.normal {
   width: 372rpx;
   height: 372rpx;
   margin-bottom: 8rpx;
 }
-.user-shows-content .big-show img.more {
+.content .big-show img.more {
   width: 246rpx;
   height: 246rpx;
   margin-bottom: 6rpx;
 }
-.operate {
+
+.action-panel {
   display: flex;
   align-items: center;
-  padding-top: 30rpx;
-  padding-bottom: 30rpx;
-  position: relative;
+  padding-left: 40rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
 }
-.operate img {
-  width: 46rpx;
-  height: 46rpx;
-}
-.operate .likes-counts,
-.operate .comments-counts {
-  font-family: "HelveticaNeueLTPro Roman";
+.likes-counts,
+.comments-counts {
   font-size: 32rpx;
   color: #000;
   display: inline-block;
   width: 80rpx;
 }
-.operate .like,
-.operate .forward {
-  margin-right: 16rpx;
+.action-item {
+  min-width: 140rpx;
+  display:flex;
+  align-items:center;
 }
-.operate .comments {
-  margin-right: 16rpx;
+.action-item img {
+  width: 46rpx;
 }
-.operate .star {
-  position: absolute;
-  top: 30rpx;
-  right: 40rpx;
-}
-
-.bottom-line {
-  width: 100%;
-  background-color: #f1f1fa;
-  height: 18rpx;
-}
-
-.delete-btn {
-  width: 50rpx;
-  height: 10rpx;
-  padding: 20rpx;
-  position: absolute;
-  top: 45rpx;
-  right: 40rpx;
-}
-
-.delete-btn img {
-  width: 50rpx;
-  height: 10rpx;
-  vertical-align: top;
+.action-item span {
+  font-family: "HelveticaNeueLTPro Roman";
+  font-size: 32rpx;
+  margin-left: 10rpx;
 }
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="height: 100%">
     <div v-if="sortList.length > 0" class="publishList">
       <ul>
         <li class="listItem" v-for="(item, index) in sortList" :key="index">
@@ -20,10 +20,7 @@
         </li>
       </ul>
     </div>
-    <EmptyTemplate v-if="sortList.length <= 0" emptyImageUrl="/static/images/empty/empty-petNest@2x.png"></EmptyTemplate>
-    <div @click="jump('publish')" class="btn-publish">
-      <img src="/static/images/index/feed_btn_write_nor@3x.png" alt="">
-    </div>
+    <EmptyTemplate v-if="sortList.length <= 0" title="暂无动态" hint="试试右下角的发布按钮吧"></EmptyTemplate>
   </div>
 </template>
 
@@ -149,15 +146,6 @@ export default {
       @include font-26-median;
       margin-left: 24rpx;
       width: 425rpx;
-    }
-  }
-  .btn-publish {
-    position: fixed;
-    right: 28rpx;
-    bottom: 5rpx;
-    img {
-      width: 124rpx;
-      height: 140rpx;
     }
   }
 </style>

@@ -58,8 +58,7 @@ export default {
   margin-left:52rpx;
   font-size: 30rpx;
   color: #000000;
-  font-weight:bold;
-  font-family: 'PingFang';
+  font-weight: bold;
   position: relative;
 }
 .tab-item.active::after {

@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       imgList: [
-        '/static/images/index/feed_icon_like_nor@2x.png'
+        '/static/images/moment/feed_icon_like_nor@2x.png'
       ],
       loved: false
     }

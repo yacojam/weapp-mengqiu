@@ -55,7 +55,7 @@ export default {
           subtime: '昨天',
           headLogo: '/static/images/default.png',
           title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
-          imgSrc: ['/static/images/material/1.png'],
+          imgSrc: ['/static/images/1.png'],
           isLoved: false
         }
       ]

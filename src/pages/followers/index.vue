@@ -22,12 +22,12 @@ export default {
       fansData: [
         {
           name: '可爱大小姐',
-          headLogo: '/static/images/material/1.png',
+          headLogo: '/static/images/1.png',
           status: 'followed'
         },
         {
           name: '养猫大王',
-          headLogo: '/static/images/index/0.jpg',
+          headLogo: '/static/images/0.jpg',
           status: 'unfollowed'
         },
         {

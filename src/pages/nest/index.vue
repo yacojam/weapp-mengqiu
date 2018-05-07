@@ -1,9 +1,12 @@
 <template>
-  <div>
+  <div class="tab-page-container">
     <TabList @tabChanged="navTabChanged" :list="tabs"></TabList>
 
     <div class="tab-panel" :class="{active: currentTab === 'moments'}">
       <PublishList :publishList="publishList"></PublishList>
+      <div @click="jump('publish')" class="btn-publish">
+        <img src="/static/images/publish/feed_btn_write_nor@2x.png" alt="" mode="widthFix">
+      </div>
     </div>
     <div class="tab-panel" :class="{active: currentTab === 'collection'}">
     </div>
@@ -41,6 +44,20 @@ export default {
     PublishList, TabList
   },
   methods: {
+    jump (type, query) {
+      let url = `/pages/${type}/main`
+      // url添加query参数
+      if (query) {
+        url += '?'
+        for (let key in query) {
+          url += `${key}=${query[key]}&`
+        }
+        url = url.substr(0, url.length - 1)
+      }
+      wx.navigateTo({
+        url: url
+      })
+    },
     getUserRelease () {
       // 用户id不存在
       if (this.lookUserId === 0) {
@@ -92,5 +109,12 @@ export default {
 </script>
 
 <style scoped>
-
+  .btn-publish {
+    position: fixed;
+    right: 20rpx;
+    bottom: 20rpx;
+  }
+  .btn-publish img {
+    width: 156rpx;
+  }
 </style>

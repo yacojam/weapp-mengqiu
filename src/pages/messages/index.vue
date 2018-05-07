@@ -26,31 +26,31 @@ export default {
       text: '',
       list: [
         {
-          avatar: '/static/images/index/0.jpg',
+          avatar: '/static/images/0.jpg',
           name: 'Sabar',
           time: '9:32',
-          img: '/static/images/index/0.jpg',
+          img: '/static/images/0.jpg',
           information: '哈哈哈'
         },
         {
-          avatar: '/static/images/index/0.jpg',
+          avatar: '/static/images/0.jpg',
           name: 'Sabar',
           time: '9:32',
-          img: '/static/images/index/0.jpg',
+          img: '/static/images/0.jpg',
           information: '哈哈哈'
         },
         {
-          avatar: '/static/images/index/0.jpg',
+          avatar: '/static/images/0.jpg',
           name: 'Sabar',
           time: '9:32',
-          img: '/static/images/index/0.jpg',
+          img: '/static/images/0.jpg',
           information: '哈哈哈'
         },
         {
-          avatar: '/static/images/index/0.jpg',
+          avatar: '/static/images/0.jpg',
           name: 'Sabar',
           time: '9:32',
-          img: '/static/images/index/0.jpg',
+          img: '/static/images/0.jpg',
           information: '哈哈哈'
         }
       ]

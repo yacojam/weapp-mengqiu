@@ -26,18 +26,18 @@ export default {
       list: [{
         pagePath: 'pages/home/main',
         text: '首页',
-        iconPath: './static/images/index/icon_home_nor@3x.png',
-        selectedIconPath: './static/images/index/icon_home_sel@3x.png'
+        iconPath: './static/images/navbar/icon_home_nor@3x.png',
+        selectedIconPath: './static/images/navbar/icon_home_sel@3x.png'
       }, {
         pagePath: 'pages/nest/main',
         text: '萌窝',
-        iconPath: './static/images/index/icon_pet_nor@3x.png',
-        selectedIconPath: './static/images/index/icon_pet_sel@3x.png'
+        iconPath: './static/images/navbar/icon_pet_nor@3x.png',
+        selectedIconPath: './static/images/navbar/icon_pet_sel@3x.png'
       }, {
         pagePath: 'pages/my/main',
         text: '我的',
-        iconPath: './static/images/index/icon_user_nor@3x.png',
-        selectedIconPath: './static/images/index/icon_user_sel@3x.png'
+        iconPath: './static/images/navbar/icon_user_nor@3x.png',
+        selectedIconPath: './static/images/navbar/icon_user_sel@3x.png'
       }],
       selectedColor: '#000000'
     }

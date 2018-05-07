@@ -139,9 +139,35 @@ table {
   border-spacing: 0;
 }
 /* 自定义通用样式 */
+.flex-wrp {
+  display: flex;
+}
+.flex-item {
+  flex: 1;
+}
 .tab-panel {
+  flex: 1;
   display: none;
 }
 .tab-panel.active {
   display: block;
+}
+.tab-page-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.full-height {
+  height: 100%;
+}
+.avatar-small {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar-small-image {
+    width: 100%;
+    height: 100%;
 }

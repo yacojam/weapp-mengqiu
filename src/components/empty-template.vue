@@ -1,6 +1,6 @@
 <template>
     <div class="empty">
-        <img class="logo" :src="emptyImageUrl || '/static/images/empty/no-data@2x.png'" alt="空值图" mode="aspectFit">
+        <img class="logo" :src="emptyImageUrl || '/static/images/empty/no-data@2x.png'" alt="空值图" mode="widthFix">
         <p class="title" >{{title}}</p>
         <p class="hint" >{{hint}}</p>
     </div>
@@ -30,7 +30,6 @@ export default {
 }
 .empty img.logo {
     width: 330rpx;
-    height: 320rpx;
 }
 .empty .title {
     margin-top: 12rpx;

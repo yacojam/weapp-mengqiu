@@ -4,7 +4,7 @@
       <img class="avatar" :src="user.avatar" alt="">
       <p>
         <span class="name">{{user.name}}</span><br>
-        <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="/static/images/index/user_icon_sign@3x.png" alt=""></span>
+        <span class="des">{{user.des}}<img @click="jump('signature')" class="alter" src="/static/images/my/user_icon_sign@3x.png" alt=""></span>
       </p>
     </div>
     <div class="center">
@@ -18,10 +18,10 @@
     </div>
     <div class="bottom">
       <ul>
-        <li @click="jump('myMessage')"><img src='/static/images/index/user_icon_sms@3x.png' alt="">我的消息</li>
-        <li @click="jump('collection')"><img src='/static/images/index/user_icon_collect@3x.png' alt="">我的收藏</li>
-        <li><img src='/static/images/index/user_icon_suggest@3x.png' alt="">意见反馈</li>
-        <li><img src='/static/images/index/user_icon_about@3x.png' alt="">关于萌球</li>
+        <li @click="jump('myMessage')"><img src='/static/images/my/user_icon_sms@3x.png' alt="">我的消息</li>
+        <li @click="jump('collection')"><img src='/static/images/my/user_icon_collect@3x.png' alt="">我的收藏</li>
+        <li><img src='/static/images/my/user_icon_suggest@3x.png' alt="">意见反馈</li>
+        <li><img src='/static/images/my/user_icon_about@3x.png' alt="">关于萌球</li>
       </ul>
     </div>
   </div>

@@ -1,12 +1,14 @@
 <template>
   <div class="user-shows-content">
-    <moment-item v-for="(item, index) in listData" :moment="item" :key="index">
+    <moment-item v-for="(item, index) in momentArray" :moment="item" :key="index">
     </moment-item>
   </div>
 </template>
 
 <script>
+import fly from '@/utils/mq-fly'
 import momentItem from './moment-item'
+import recommendList from '@/api-mock/recommendmomentlist'
 
 export default {
   components: {
@@ -14,51 +16,37 @@ export default {
   },
   data () {
     return {
-      imgList: [
-        '/static/images/moment/feed_icon_like_nor@2x.png'
-      ],
-      loved: false
+      page: 1,
+      momentArray: recommendList
     }
   },
   props: {
-    showStar: {
-      type: Boolean,
-      'default': false
-    },
-    lifeStatusData: {
-      type: Array
-    },
-    loveNum: {
-      type: Number,
-      default: 0
-    },
-    commentNum: {
-      type: Number,
-      default: 0
-    },
-    refId: {
-      type: Number,
-      default: 0
+    type: {
+      type: String,
+      default: 'recommend'
     }
   },
-
   computed: {
-    listData () {
-      let _data = this.lifeStatusData
-      let className = 'less'
-      for (let i in _data) {
-        if (_data[i].imgSrc.length > 4) {
-          className = 'more'
-        }
-        if (_data[i].imgSrc.length >= 2 && _data[i].imgSrc.length <= 4) {
-          className = 'normal'
-        }
-        _data[i] = Object.assign(_data[i], { className })
-
-        className = 'less'
+  },
+  methods: {
+    async loadMoments () {
+      wx.showLoading({
+        title: '加载中'
+      })
+      let res = await fly.post('/mq/moments/list', {
+        // tab: this.currentTab.type,
+        page: this.page,
+        size: 10,
+        look_user_id: wx.getStorageSync('uid')
+      })
+      if (res.code === 1) {
+        this.momentArray = this.momentArray.concat(res.data.list)
       }
-      return _data
+      wx.hideLoading()
     }
+  },
+  async created () {
+    // this.loadMoments()
   }
 }
 </script>

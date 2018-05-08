@@ -18,3 +18,24 @@ export function formatTime (date) {
   return `${t1} ${t2}`
 }
 
+export function formatNumber(number) {
+  if (number > 10^8) {
+    // 大于1亿
+    return 
+  } else if (number > 10^4) {
+
+  } else if (number > 10^3) {
+
+  } else {
+    return number
+  }
+}
+
+export function formatTime(timestamp) {
+  const now = Date.now()
+  const passTime = now - timestamp
+  const MILLS_OF_DAY = 1000 * 60 * 60 * 24
+  if (passTime > MILLS_OF_DAY) {
+
+  }
+}

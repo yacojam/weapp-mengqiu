@@ -3,10 +3,10 @@ const Fly = require('flyio/dist/npm/wx')
 const api = require('./connect')
 const fly = new Fly()
 
-fly.config.headers = {
-  'x-cert-uid': 20,
-  'x-cert-token': 'B626086DFB43E94A931547891C26CCD1'
-}
+// fly.config.headers = {
+//   'x-cert-uid': 20,
+//   'x-cert-token': 'B626086DFB43E94A931547891C26CCD1'
+// }
 fly.config.timeout = 5000
 fly.parseJson = true
 fly.config.baseURL = api.url

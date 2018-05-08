@@ -2,38 +2,40 @@
     <div :data="data" :key="index" class="moment-item" @click="onMomentClick">
       <div class="user-info">
         <div class="avatar-small">
-          <img class="avatar-small-image" :src="moment.headLogo" alt="用户头像">
+          <img class="avatar-small-image" :src="moment.user_avatar" alt="用户头像">
         </div>
         <div class="name-time">
-          <p class="name">{{ moment.name }}</p>
+          <div class="flex-wrp name-container">
+            <p class="name">{{ moment.user_name }}</p>   
+            <div class="btn-follow" @click.stop="toggleFollow">
+              <img class="img-follow" src="/static/images/moment/fans_btn_unfollowed@2x.png" alt="关注按钮" mode="widthFix">
+            </div>
+          </div>
           <p class="time">
-            {{ moment.time }}
+            {{ moment.pub_time }}
               <span v-show="moment.location" class="location">{{ moment.location }}</span>
           </p>
         </div>
-        <div class="flex-wrp" v-if="isMyMoment" @click.stop="toggleFollow">
-          <img class="btn-follow" src="/static/images/moment/fans_btn_unfollowed@2x.png" alt="关注按钮" mode="widthFix">
-        </div>
-        <div class="flex-wrp" v-else @click.stop="onDeleteClick">
-          <img class="btn-delete" src="/static/images/moment/fans_btn_unfollowed2_pressed@2x.png" alt="删除按钮" mode="widthFix">
+        <div class="btn-context-menu" @click.stop="onMenuClick">
+          <img class="img-context-menu" src="/static/images/moment/feed_icon_menu@2x.png" alt="菜单按钮" mode="widthFix">
         </div>
       </div>
       <div class="content">
         <p class="title">{{ moment.title }}</p>
         <div class="big-show">
-        <img v-for="(citem, cindex) in moment.imgSrc" :class="moment.className" 
-            :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.imgSrc)">
+          <img v-for="(citem, cindex) in moment.content_list" :class="gridClass" 
+            :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.content_list)">
         </div>
-        <!-- :class="['more',moment.imgSrc.length > 1 && moment.imgSrc.length < 5 ? 'normal': 'less']" -->
+        <!-- :class="['more',moment.content_list.length > 1 && moment.content_list.length < 5 ? 'normal': 'less']" -->
       </div>
       <div class="action-panel">
         <div class="action-item">
-            <img :src="moment.showStar ? '/static/images/moment/feed_icon_collect_sel@2x.png' : '/static/images/moment/feed_icon_collect_nor@2x.png'" alt="like" mode="widthFix" @click.stop="toggleLove">
-            <span v-show="moment.loveNum" class="likes-counts">{{moment.loveNum }}</span>
+            <img :src="moment.liked ? '/static/images/moment/feed_icon_collect_sel@2x.png' : '/static/images/moment/feed_icon_collect_nor@2x.png'" alt="like" mode="widthFix" @click.stop="toggleLove">
+            <span v-show="moment.like_count" class="likes-counts">{{moment.like_count }}</span>
         </div>
         <div class="action-item" >
             <img src="/static/images/moment/feed_icon_comment@2x.png" alt="comment" mode="widthFix" @click.stop="toggleLove">
-            <span v-show="moment.commentNum" class="comments-counts">{{moment.commentNum}}</span>
+            <span v-show="moment.comment_count" class="comments-counts">{{moment.comment_count}}</span>
         </div>
         <div class="action-item">
             <img src="/static/images/moment/feed_icon_share@2x.png" alt="share" mode="widthFix" @click.stop="toggleLove">
@@ -50,8 +52,7 @@ export default {
     return {
       imgList: [
         '/static/images/moment/feed_icon_like_nor@2x.png'
-      ],
-      loved: false
+      ]
     }
   },
   props: {
@@ -133,9 +134,9 @@ export default {
         .then((res) => {
           if (res.code === 1) {
             if (that.loved) {
-              that.loveNum -= 1
+              that.like_count -= 1
             } else {
-              that.loveNum += 1
+              that.like_count += 1
             }
             that.loved = !that.loved
           }
@@ -145,12 +146,33 @@ export default {
     },
     onCommentClick () {
 
+    },
+    onMenuClick () {
+      wx.showActionSheet({
+        itemList: ['删除', '举报', '不感兴趣'],
+        success: res => {
+          console.log(res.tapIndex)
+        },
+        fail: res => {
+          console.log(res.errMsg)
+        }
+      })
     }
   },
   created () { },
   computed: {
     lovedImgUrl () {
       return this.loved ? '/static/images/moment/feed_icon_like_sel@2x.png' : '/static/images/moment/feed_icon_like_nor@2x.png'
+    },
+    gridClass () {
+      let className = 'one-column'
+      let contentLength = this.moment.content_list.length
+      if (contentLength % 3 === 0 || contentLength > 4) {
+        className = 'three-column'
+      } else if (contentLength % 2 === 0) {
+        className = 'two-column'
+      }
+      return className
     }
   }
 }
@@ -178,9 +200,14 @@ export default {
   font-size: 26rpx;
   color: #000;
 }
+.name-time .btn-follow {
+  display: flex;
+  align-items: center;
+  margin-left: 15rpx;
+}
 .name-time .time {
   font-family: "HelveticaNeueLTPro Lt";
-  margin-top: 12rpx;
+  margin-top: 10rpx;
   font-size: 22rpx;
   color: #000;
   opacity: 0.7;
@@ -191,12 +218,17 @@ export default {
   color: #000;
   opacity: 0.7;
 }
-.user-info .btn-follow {
-  width: 122rpx;
+.user-info .img-follow {
+  width: 80rpx;
 }
-.user-info .btn-delete {
-  width: 122rpx;
+.user-info  .btn-context-menu {
+  display: flex;
+  padding: 20rpx 10rpx;
 }
+.user-info .img-context-menu {
+  width: 50rpx;
+}
+
 
 .content .title {
   font-size: 32rpx;
@@ -207,17 +239,22 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  border: 1px solid #eee;
 }
-.content .big-show img.less {
+.content .big-show img {
+  
+}
+
+.content .big-show img.one-column {
   width: 100%;
   height: 500rpx;
 }
-.content .big-show img.normal {
+.content .big-show img.two-column {
   width: 372rpx;
   height: 372rpx;
   margin-bottom: 8rpx;
 }
-.content .big-show img.more {
+.content .big-show img.three-column {
   width: 246rpx;
   height: 246rpx;
   margin-bottom: 6rpx;
@@ -238,7 +275,7 @@ export default {
   width: 80rpx;
 }
 .action-item {
-  min-width: 140rpx;
+  min-width: 130rpx;
   display:flex;
   align-items:center;
 }

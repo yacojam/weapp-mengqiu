@@ -4,10 +4,10 @@
         <TabList :list="tabs" @tabChanged="changeTab" />
 
         <div class="tab-panel" :class="{active: currentTab === 'recommend'}">
-          <MomentList slot="content" :lifeStatusData="lifeStatusData"></MomentList>
+          <MomentList :type="recommend"></MomentList>
         </div>
         <div class="tab-panel" :class="{active: currentTab === 'following'}">
-          <MomentList slot="content" :lifeStatusData="[lifeStatusData[1]]"></MomentList>
+          <MomentList :type="following"></MomentList>
         </div>
       </div>
   </div>
@@ -16,8 +16,6 @@
 <script>
 import MomentList from '@/components/moment/moment-list'
 import TabList from '@/components/tab/tab-list'
-
-import lifeStatusData from '@/api-mock/recommendmomentlist'
 
 export default {
   data () {
@@ -31,8 +29,7 @@ export default {
           title: '关注'
         }
       ],
-      currentTab: 'recommend',
-      lifeStatusData
+      currentTab: 'recommend'
     }
   },
   components: {

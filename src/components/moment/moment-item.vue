@@ -8,7 +8,7 @@
           <div class="flex-wrp name-container">
             <p class="name">{{ moment.user_name }}</p>   
             <div class="btn-follow" @click.stop="toggleFollow">
-              <img class="img-follow" src="/static/images/moment/fans_btn_unfollowed@2x.png" alt="关注按钮" mode="widthFix">
+              <img class="img-follow" :src="moment.following ? '/static/images/moment/fans_btn_followed@2x.png' : '/static/images/moment/fans_btn_unfollowed@2x.png'" alt="关注按钮" mode="widthFix">
             </div>
           </div>
           <p class="time">
@@ -73,7 +73,7 @@ export default {
       })
     },
     toggleFollow () {
-      this.loved = !this.loved
+      this.moment.following = !this.moment.following
     },
     onPictureClick (src, imageUrls) {
       wx.previewImage({

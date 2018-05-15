@@ -26,14 +26,13 @@ export default {
       }).then(res => {
         if (res.code === 1) {
           console.log(res)
-          this.$set(this.dataList, 0, res.data.list)
+          // this.$set(this.dataList, 0, res.data.list)
+          this.dataList = res.data.list
         }
       }).catch(res => {
         console.log(res)
       })
     }
-  },
-  created () {
   },
   onShow () {
     this.getCollectionList()

@@ -8,17 +8,17 @@
       </p>
     </div>
     <div class="center">
-      <ul> 
-        <li @click="jump('consumer',{
+      <ul>
+        <li @click="jump('profile',{
           lookUserId: userid
         })"><p>{{user.publish}}</p><p>发布</p></li>
-        <li @click="jump('concern')"><p>{{user.fellow}}</p><p>关注</p></li>
-        <li @click="jump('fans')"><p>{{user.fans}}</p><p>粉丝</p></li>
+        <li @click="jump('followees')"><p>{{user.fellow}}</p><p>关注</p></li>
+        <li @click="jump('followers')"><p>{{user.fans}}</p><p>粉丝</p></li>
       </ul>
     </div>
     <div class="bottom">
       <ul>
-        <li @click="jump('myMessage')"><img src='/static/images/my/user_icon_sms@3x.png' alt="">我的消息</li>
+        <li @click="jump('messages')"><img src='/static/images/my/user_icon_sms@3x.png' alt="">我的消息</li>
         <li @click="jump('collection')"><img src='/static/images/my/user_icon_collect@3x.png' alt="">我的收藏</li>
         <li><img src='/static/images/my/user_icon_suggest@3x.png' alt="">意见反馈</li>
         <li><img src='/static/images/my/user_icon_about@3x.png' alt="">关于萌球</li>

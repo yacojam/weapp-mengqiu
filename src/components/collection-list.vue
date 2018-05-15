@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     lists () {
-      return this.dataList[0]
+      return this.dataList
     }
   },
   methods: {

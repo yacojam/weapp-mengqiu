@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="operate">
-                <img :src="'/static/images/lists/fans_btn_'+item.status+'@2x.png'" alt="示例图">
+                <img :src="'/static/images/lists/fans_btn_'+item.status+'_pressed@2x.png'" alt="示例图">
             </div>
         </div>
     </div>

@@ -241,9 +241,6 @@ export default {
   flex-wrap: wrap;
   border: 1px solid #eee;
 }
-.content .big-show img {
-  
-}
 
 .content .big-show img.one-column {
   width: 100%;
@@ -252,12 +249,12 @@ export default {
 .content .big-show img.two-column {
   width: 372rpx;
   height: 372rpx;
-  margin-bottom: 8rpx;
+  margin-top: 8rpx;
 }
 .content .big-show img.three-column {
   width: 246rpx;
   height: 246rpx;
-  margin-bottom: 6rpx;
+  margin-top: 6rpx;
 }
 
 .action-panel {

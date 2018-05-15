@@ -2,16 +2,16 @@
   <div class="container">
     <div class="content">
       <div class="take-picture">
-        <img @click="directToUploadImg" src="/static/images/release/feed_icon_photo@3x.png" alt="挑个片">
+        <img @click="directToUploadImg" src="/static/images/publish/feed_icon_photo@3x.png" alt="挑个片">
         <p>挑个片</p>
       </div>
       <div class="take-video">
-        <img @click="directToUploadVideo" src="/static/images/release/feed_icon_shoot@3x.png" alt="拍个片">
+        <img @click="directToUploadVideo" src="/static/images/publish/feed_icon_shoot@3x.png" alt="拍个片">
         <p>拍个片</p>
       </div>
     </div>
     <div class="back">
-      <img @click="backIndexPage" src="/static/images/release/feed_icon_close@3x.png" alt="">
+      <img @click="backIndexPage" src="/static/images/publish/feed_icon_close@3x.png" alt="">
     </div>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   methods: {
     backIndexPage () {
       wx.switchTab({
-        url: `/pages/index/main`
+        url: `/pages/nest/main`
       })
     },
     directToUploadImg () {

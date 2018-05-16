@@ -1,12 +1,12 @@
 <template>
-    <div :data="data" :key="index" class="moment-item" @click="onMomentClick">
+    <div :data="data" :key="index" class="moment-item" @click="onMomentClick(moment.id)">
       <div class="user-info">
         <div class="avatar-small">
           <img class="avatar-small-image" :src="moment.user_avatar" alt="用户头像">
         </div>
         <div class="name-time">
           <div class="flex-wrp name-container">
-            <p class="name">{{ moment.user_name }}</p>   
+            <p class="name">{{ moment.user_name }}</p>
             <div class="btn-follow" @click.stop="toggleFollow">
               <img class="img-follow" :src="moment.following ? '/static/images/moment/fans_btn_followed@2x.png' : '/static/images/moment/fans_btn_unfollowed@2x.png'" alt="关注按钮" mode="widthFix">
             </div>
@@ -23,7 +23,7 @@
       <div class="content">
         <p class="title">{{ moment.title }}</p>
         <div class="big-show">
-          <img v-for="(citem, cindex) in moment.content_list" :class="gridClass" 
+          <img v-for="(citem, cindex) in moment.content_list" :class="gridClass"
             :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.content_list)">
         </div>
         <!-- :class="['more',moment.content_list.length > 1 && moment.content_list.length < 5 ? 'normal': 'less']" -->
@@ -67,10 +67,12 @@ export default {
         url: `/pages/profile/main`
       })
     },
-    onMomentClick (url) {
-      wx.navigateTo({
-        url: `/pages/moment/main`
-      })
+    onMomentClick (momentid) {
+      if (momentid) {
+        wx.navigateTo({
+          url: `/pages/moment/main?momentid=${momentid}`
+        })
+      }
     },
     toggleFollow () {
       this.moment.following = !this.moment.following

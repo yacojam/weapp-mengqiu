@@ -4,8 +4,11 @@
     <div v-if="videoPath !== ''" class="uploadVideo">
       <video id="myVideo" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="videoPath" alt=""></video>
     </div>
-    <div @click="publish" class="send">
-      <img src="/static/images/index/feed_btn_send_press@3x.png" alt="">
+    <div class="send">
+      <div class="send-button" @click="publish">
+        <img src="/static/images/upload/feed_btn_send_nor@3x.png" alt="">
+        <span class="send-text">发布</span>
+      </div>
     </div>
   </div>
 
@@ -57,6 +60,11 @@
 
 <style lang="scss" scoped>
   .container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     background: #ffffff;
   }
   textarea {
@@ -83,11 +91,26 @@
   }
   .send {
     width: 100%;
-    text-align:center;
+    display:flex;
+    justify-content: center;
+    padding-top: 40rpx;
+  }
+  .send .send-button {
+    position: relative;
   }
   .send img {
-    margin-top: 40rpx;
     width: 312rpx;
     height: 88rpx;
+  }
+  .send .send-text {
+    @include font-32;
+    line-height: 88rpx;
+    position: absolute;
+    top:0;
+    left: 0;
+    display:block;
+    width: 100%;
+    height: 100%;
+    text-align:center;
   }
 </style>

@@ -1,15 +1,18 @@
 <template>
-  <div>
+  <div class="container">
     <textarea v-model="text" placeholder="给萌球配上文字..."></textarea>
     <div class="uploadImages">
       <div class="imgs" v-for="(item, index) in pics" :key="index">
         <img :src="item" alt="">
-        <img class="delete" src="/static/images/moment/feed_icon_del@3x.png" alt="">
+        <img @click="deleteImg(index)" class="delete" src="/static/images/upload/feed_icon_del@3x.png" alt="">
       </div>
-      <img src="/static/images/index/feed_icon_add@3x.png" alt="">
+      <img @click="selectImg" src="/static/images/upload/feed_icon_add@3x.png" alt="">
     </div>
-    <div @click="publish" class="send">
-      <img src="/static/images/index/feed_btn_send_press@3x.png" alt="">
+    <div class="send">
+      <div class="send-button" @click="publish">
+        <img src="/static/images/upload/feed_btn_send_nor@3x.png" alt="">
+        <span class="send-text">发布</span>
+      </div>
     </div>
   </div>
 
@@ -86,6 +89,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #ffffff;
+  }
 textarea {
   width: 100%;
   height: 256rpx;
@@ -123,11 +134,26 @@ textarea {
 }
 .send {
   width: 100%;
-  text-align: center;
+  display:flex;
+  justify-content: center;
+  padding-top: 80rpx;
+}
+.send .send-button {
+  position: relative;
 }
 .send img {
-  margin-top: 80rpx;
   width: 312rpx;
   height: 88rpx;
+}
+.send .send-text {
+  @include font-32;
+  line-height: 88rpx;
+  position: absolute;
+  top:0;
+  left: 0;
+  display:block;
+  width: 100%;
+  height: 100%;
+  text-align:center;
 }
 </style>

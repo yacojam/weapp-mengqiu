@@ -82,7 +82,7 @@ export default {
           let videoSrc = res.tempFilePath
           wx.setStorageSync('uploadVideo', videoSrc)
           wx.navigateTo({
-            url: '/pages/uploadVideo/main'
+            url: '/pages/upload-video/main'
           })
         }
       })

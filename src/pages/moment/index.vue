@@ -1,7 +1,7 @@
 <template>
   <scroll-view scroll-with-animation scroll-y class="container">
     <MomentList :="true" :lifeStatusData="lifeStatusData" :loveNum="loveNum" :commentNum="commentNum" :refId="momentid"></MomentList>
-    <div class="likePeople">
+    <div class="likePeople" v-if="loveUserList.length > 0">
       <div v-for="(item, index) in loveUserList" :key="index" v-if="index < 3">
         <img :src="item.img" alt="">
       </div>
@@ -107,6 +107,7 @@ export default {
         type_id: 7,
         ref_id: this.momentid
       }).then(res => {
+        console.log(res)
         this.commentList = res.data.list
       })
     }
@@ -138,6 +139,7 @@ export default {
   align-items: center;
   background: #fff;
   margin-bottom: 18rpx;
+  margin-top: -18rpx;
   img {
     width: 40rpx;
     height: 40rpx;

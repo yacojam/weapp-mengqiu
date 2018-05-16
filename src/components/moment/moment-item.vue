@@ -251,10 +251,26 @@ export default {
   height: 372rpx;
   margin-top: 8rpx;
 }
+.content .big-show img.two-column:nth-child(1) {
+  margin-top: 0;
+}
+.content .big-show img.two-column:nth-child(2) {
+  margin-top: 0;
+}
+
 .content .big-show img.three-column {
   width: 246rpx;
   height: 246rpx;
   margin-top: 6rpx;
+}
+.content .big-show img.three-column:nth-child(1) {
+  margin-top: 0;
+}
+.content .big-show img.three-column:nth-child(2) {
+  margin-top: 0;
+}
+.content .big-show img.three-column:nth-child(3) {
+  margin-top: 0;
 }
 
 .action-panel {

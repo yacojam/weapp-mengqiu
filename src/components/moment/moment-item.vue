@@ -246,31 +246,21 @@ export default {
   width: 100%;
   height: 500rpx;
 }
+
 .content .big-show img.two-column {
   width: 372rpx;
   height: 372rpx;
+}
+.content .big-show img.two-column:nth-child(n+3) {
   margin-top: 8rpx;
-}
-.content .big-show img.two-column:nth-child(1) {
-  margin-top: 0;
-}
-.content .big-show img.two-column:nth-child(2) {
-  margin-top: 0;
 }
 
 .content .big-show img.three-column {
   width: 246rpx;
   height: 246rpx;
+}
+.content .big-show img.three-column:nth-child(n+4) {
   margin-top: 6rpx;
-}
-.content .big-show img.three-column:nth-child(1) {
-  margin-top: 0;
-}
-.content .big-show img.three-column:nth-child(2) {
-  margin-top: 0;
-}
-.content .big-show img.three-column:nth-child(3) {
-  margin-top: 0;
 }
 
 .action-panel {

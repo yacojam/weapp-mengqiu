@@ -2,6 +2,14 @@
   import fly from '@/utils/mq-fly'
   export default {
     created () {
+      // 如果uid和token已经存在，不需要登陆直接从storage中获取
+      let uid = wx.getStorageSync('uid')
+      let token = wx.getStorageSync('token')
+      if (uid && token) {
+        fly.config.headers['x-cert-uid'] = uid
+        fly.config.headers['x-cert-token'] = token
+        return
+      }
       // 获取用户登录信息
       wx.login({
         success: function (res) {
@@ -30,6 +38,7 @@
                     fly.config.headers['x-cert-uid'] = res.data.uid
                     fly.config.headers['x-cert-token'] = res.data.token
                     wx.setStorageSync('uid', res.data.uid)
+                    wx.setStorageSync('token', res.data.uid)
                   })
                 }
               })

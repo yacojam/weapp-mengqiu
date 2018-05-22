@@ -146,17 +146,13 @@ table {
   flex: 1;
 }
 .tab-panel {
-  flex: 1;
   display: none;
 }
 .tab-panel.active {
   display: block;
 }
 .tab-page-container {
-  display: flex;
   width: 100%;
-  height: 100%;
-  flex-direction: column;
 }
 .full-height {
   height: 100%;

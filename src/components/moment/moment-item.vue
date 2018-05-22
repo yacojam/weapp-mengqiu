@@ -129,9 +129,10 @@ export default {
       let _url = ''
       that.loved ? _url = 'cancel' : _url = 'execute'
       console.log(_url)
-      fly.post(`/information/${_url}/love`, {
+      console.log(this.moment.id)
+      fly.post(`/information/${_url}/favorite`, {
         type_id: 7,
-        ref_id: that.refId
+        ref_id: this.moment.id
       })
         .then((res) => {
           if (res.code === 1) {

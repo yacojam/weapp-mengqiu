@@ -9,6 +9,7 @@
       </div>
     </div>
     <div class="tab-panel" :class="{active: currentTab === 'collection'}">
+      <PublishList :publishList="favoriteList"></PublishList>
     </div>
   </div>
 </template>
@@ -37,6 +38,8 @@ export default {
       size: 10,
       first: true,
       publishList: [
+      ],
+      favoriteList: [
       ]
     }
   },
@@ -77,15 +80,14 @@ export default {
     },
     getlistByFavorite () {
       if (this.lookUserId === 0) {
-        this.publishList = []
+        this.favoriteList = []
         return
       }
       fly.post('information/listByFavorite', {
         type_id: 7
       }).then((res) => {
         if (res.code === 1) {
-          console.log(res)
-          this.publishList = res.data.list
+          this.favoriteList = res.data.list
         }
       })
     },

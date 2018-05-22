@@ -5,7 +5,7 @@
       <span>{{ lists.length }}</span>
     </div>
     <div class="photos" v-for="(item, index) in lists" :key="index">
-      <img :src="item.imgList[0]" alt="" @click="jump(item.id, item.status, item.type_id)">
+      <img :src="item.img_list[0]" alt="" @click="jump(item.id, item.status, item.type_id)">
     </div>
   </div>
 </template>
@@ -22,8 +22,11 @@ export default {
   },
   methods: {
     jump (id, status, typeId) {
+      if (!id) {
+        return
+      }
       wx.navigateTo({
-        url: `/pages/moment/main`
+        url: `/pages/moment/main?momentid=${id}`
       })
     }
   },

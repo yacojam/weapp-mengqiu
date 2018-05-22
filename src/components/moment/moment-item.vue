@@ -23,8 +23,9 @@
       <div class="content">
         <p class="title">{{ moment.title }}</p>
         <div class="big-show">
-          <img v-for="(citem, cindex) in moment.content_list" :class="gridClass"
+          <img v-if="moment.type === '1'" v-for="(citem, cindex) in moment.content_list" :class="gridClass"
             :key="cindex" :src="citem" alt="展示用大图" mode="aspectFill" @click.stop="onPictureClick(citem, moment.content_list)">
+          <video @click.stop :style="{width: '100%'}" v-if="moment.type === '2'" :show-play-btn="true" :show-center-play-btn="true" objectFit="contain" :controls="true" :src="moment.video_link" alt=""></video>
         </div>
         <!-- :class="['more',moment.content_list.length > 1 && moment.content_list.length < 5 ? 'normal': 'less']" -->
       </div>

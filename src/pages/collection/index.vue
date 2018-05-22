@@ -27,6 +27,7 @@ export default {
         if (res.code === 1) {
           console.log(res)
           // this.$set(this.dataList, 0, res.data.list)
+          console.log(res.data.list)
           this.dataList = res.data.list
         }
       }).catch(res => {

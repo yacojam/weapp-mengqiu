@@ -70,6 +70,7 @@ export default {
     },
     onMomentClick (momentid) {
       if (momentid) {
+        wx.setStorageSync('moment', this.moment)
         wx.navigateTo({
           url: `/pages/moment/main?momentid=${momentid}`
         })
@@ -185,6 +186,7 @@ export default {
 <style scoped>
 .moment-item {
   border-bottom: 18rpx solid #f1f1fa;
+  background: white;
 }
 
 .user-info {

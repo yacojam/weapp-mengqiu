@@ -1,6 +1,6 @@
 <template>
-  <scroll-view scroll-with-animation scroll-y class="container">
-    <MomentList :="true" :lifeStatusData="lifeStatusData" :loveNum="loveNum" :commentNum="commentNum" :refId="momentid"></MomentList>
+  <div class="container">
+    <MomentItem :moment="moment"></MomentItem>
     <div class="likePeople" v-if="loveUserList.length > 0">
       <div v-for="(item, index) in loveUserList" :key="index" v-if="index < 3">
         <img :src="item.img" alt="">
@@ -27,38 +27,28 @@
       <input type="text" placeholder="发表评论..." class="inputs" v-model="commentDetails">
       <span class="submit" @click="subComment">发表</span>
     </div>
-  </scroll-view>
+  </div>
 </template>
 
 <script>
-import MomentList from '@/components/moment/moment-list'
+import MomentItem from '@/components/moment/moment-item'
 import EmptyTemplate from '@/components/empty-template'
 import fly from '@/utils/mq-fly'
 
 export default {
   components: {
-    MomentList, EmptyTemplate
+    MomentItem, EmptyTemplate
   },
   data () {
     return {
       momentid: 0,
+      moment: {},
       commentDetails: '',
       loveUserList: [
       ],
       commentList: [
       ],
-      type: 'comments',
-      lifeStatusData: [
-        {
-          name: 'Sabar',
-          time: '09:32',
-          subtime: '昨天',
-          headLogo: '/static/images/default.png',
-          title: '这种天气最适合带着丫丫出去遛弯儿啦~~',
-          imgSrc: ['/static/images/1.png'],
-          isLoved: false
-        }
-      ]
+      type: 'comments'
     }
   },
   computed: {
@@ -79,12 +69,10 @@ export default {
       fly.post('mq/moments/detail', {
         id: this.momentid
       }).then((res) => {
-        // this.commentList = res.data['comment_list']
-        console.log('````')
         console.log(res)
-        this.lifeStatusData[0].title = res.data.detail.text
-        this.lifeStatusData[0].imgSrc = res.data.detail['img_list']
-        this.loveUserList = res.data['love_user_list']
+        if (res.code === 1) {
+          this.loveUserList = res.data['love_user_list']
+        }
       })
     },
 
@@ -123,6 +111,7 @@ export default {
   },
   watch: {
     momentid () {
+      this.moment = wx.getStorageSync('moment')
       this.getDetails()
     }
   }

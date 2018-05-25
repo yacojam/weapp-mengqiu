@@ -6,47 +6,24 @@
 </template>
 
 <script>
-import fly from '@/utils/mq-fly'
 import momentItem from './moment-item'
-import recommendList from '@/api-mock/recommendmomentlist'
+// import recommendList from '@/api-mock/recommendmomentlist'
 
 export default {
   components: {
     momentItem
   },
-  data () {
-    return {
-      page: 1,
-      momentArray: recommendList
-    }
-  },
   props: {
     type: {
       type: String,
       default: 'recommend'
+    },
+    momentArray: {
+      type: Array,
+      'default': []
     }
   },
   computed: {
-  },
-  methods: {
-    async loadMoments () {
-      wx.showLoading({
-        title: '加载中'
-      })
-      let res = await fly.post('/mq/moments/list', {
-        // tab: this.currentTab.type,
-        page: this.page,
-        size: 10,
-        look_user_id: wx.getStorageSync('uid')
-      })
-      if (res.code === 1) {
-        this.momentArray = this.momentArray.concat(res.data.list)
-      }
-      wx.hideLoading()
-    }
-  },
-  async created () {
-    // this.loadMoments()
   }
 }
 </script>
